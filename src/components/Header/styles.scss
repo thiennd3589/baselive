@@ -1,0 +1,23 @@
+.Header {
+  padding: 15px 20px;
+  .Container {
+    display: flex;
+    justify-content: space-between;
+    .logoSection {
+      cursor: pointer;
+    }
+    .Menu {
+      .ui.menu {
+        .item {
+          margin: 0 10px;
+          text-decoration: none;
+          color: #000;
+          font-weight: 500;
+          &:focus {
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+}

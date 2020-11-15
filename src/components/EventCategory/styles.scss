@@ -1,0 +1,60 @@
+@import "variables.scss";
+
+.EventCategory {
+  display: flex;
+  flex-direction: column;
+
+  > .Title {
+    span {
+      font-weight: 600;
+      font-size: 2rem;
+      line-height: 39px;
+    }
+  }
+
+  .Category {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.CategoryItem {
+  display: flex;
+  height: $input-height;
+  align-items: center;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0px 2px 8px #efefef;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0px 5px 20px #c9c9c9;
+    .Image {
+      img {
+        height: 110%;
+      }
+    }
+  }
+  .Image {
+    height: 100%;
+    overflow: hidden;
+    img {
+      height: 100%;
+      transition: height 0.3s ease-in-out;
+    }
+  }
+
+  .Title {
+    margin: 0px 20px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 25px;
+  }
+
+  margin: 15px;
+  &:first-child {
+    margin-left: 0;
+  }
+}

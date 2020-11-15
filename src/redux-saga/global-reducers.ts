@@ -1,0 +1,17 @@
+import { createReducer } from "utils";
+
+export const QUERY_CATEGORY_SUCCESS = "QUERY_CATEGORY_SUCCESS";
+export const QUERY_CATEGORY_FAILURE = "QUERY_CATEGORY_FAILURE";
+
+export const Category = createReducer(
+  QUERY_CATEGORY_SUCCESS,
+  QUERY_CATEGORY_FAILURE
+);
+
+export const QUERY_CATEGORY_TYPE_SUCCESS = "QUERY_CATEGORY_TYPE_SUCCESS";
+export const QUERY_CATEGORY_TYPE_FAILURE = "QUERY_CATEGORY_TYPE_FAILURE";
+
+export const CategoryType = createReducer(
+  QUERY_CATEGORY_TYPE_SUCCESS,
+  QUERY_CATEGORY_TYPE_FAILURE
+);

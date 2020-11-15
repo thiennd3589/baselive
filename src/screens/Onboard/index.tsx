@@ -1,7 +1,9 @@
+import EventCategory from "components/EventCategory";
+import EventPicker from "components/EventPicker";
 import React from "react";
 import "./styles.scss";
 
-export default () => {
+const Onboard = () => {
   return (
     <div className="Onboard">
       <div className="Title">
@@ -9,7 +11,13 @@ export default () => {
           <p>Baselive</p>
           <p>A unique virual online video streaming platform </p>
         </h1>
+        <EventPicker />
+      </div>
+      <div className="Content">
+        <EventCategory />
       </div>
     </div>
   );
 };
+
+export default Onboard;

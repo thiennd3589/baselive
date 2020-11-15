@@ -1,0 +1,48 @@
+@import "../../variables.scss";
+
+.EventPicker {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1.35rem;
+  line-height: 1.8rem;
+  box-shadow: 0px 2px 16px #ececec;
+  border-radius: 5px;
+  border: 1px solid #dbdbdb;
+  padding: 0.8rem;
+
+  .SearchIcon {
+    display: flex;
+    align-items: center;
+
+    i {
+      position: relative;
+      bottom: 2px;
+      font-size: 1.6rem;
+      font-weight: 100;
+    }
+  }
+
+  input {
+    width: 100%;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .SearchButton {
+    button {
+      padding: 0.6rem 0.5rem;
+      border: none;
+      background-color: $theme-color;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

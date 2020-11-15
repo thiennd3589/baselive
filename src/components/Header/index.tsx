@@ -1,10 +1,12 @@
 import React from "react";
 import { Menu } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "assets/Logo.svg";
 import "./styles.scss";
 
-export default () => {
+const Header = () => {
+  const location = useLocation();
+
   return (
     <div className="Header">
       <div className="Container">
@@ -14,14 +16,26 @@ export default () => {
           </Link>
         </div>
         <div className="Menu">
-          <Menu secondary> 
-            <Menu.Item name="Become a host" as={Link} />
-            <Menu.Item name="Help" as={Link} />
-            <Menu.Item name="Sign up" as={Link} />
-            <Menu.Item name="Log in" as={Link} />
+          <Menu secondary>
+            <Menu.Item name="Become a host" as={Link} to="/createEvent" />
+            <Menu.Item name="Help" as={Link} to="/" />
+            <Menu.Item
+              name="Sign up"
+              as={Link}
+              to="/login"
+              active={location.pathname === "/signup"}
+            />
+            <Menu.Item
+              name="Log in"
+              as={Link}
+              to="/login"
+              active={location.pathname === "/login"}
+            />
           </Menu>
         </div>
       </div>
     </div>
   );
 };
+
+export default Header;

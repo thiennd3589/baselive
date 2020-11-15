@@ -1,0 +1,27 @@
+@import "../../variables.scss";
+
+.CustomDropdown {
+  .ui.fluid.dropdown {
+    display: flex;
+    justify-content: space-between;
+    height: $input-height;
+    align-items: center;
+    padding-right: 10px;
+    .menu,
+    &.active,
+    &.active:hover,
+    &:focus {
+      border-color: $theme-color !important;
+    }
+
+    > .text {
+      font-size: 1.28rem;
+      line-height: 27px;
+      color: $text-color !important;
+    }
+
+    i {
+      font-size: 1.28rem;
+    }
+  }
+}

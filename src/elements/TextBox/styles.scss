@@ -1,0 +1,46 @@
+@import "../../variables.scss";
+
+.TextBox {
+  margin-bottom: 20px;
+
+  .Input {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dbdbdb;
+    width: 44rem;
+    height: $input-height;
+    justify-content: center;
+    padding: 10px;
+    box-shadow: 0px 2px 16px #ececec;
+    border-radius: 5px;
+    label {
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 21px;
+      letter-spacing: 0.14px;
+    }
+    input {
+      border: none;
+      font-size: 1.7rem;
+      line-height: 36px;
+      width: 100%;
+      &:focus {
+        outline: none;
+      }
+      &::placeholder {
+        font-weight: 200;
+      }
+    }
+  }
+
+  &.Error {
+    .Input {
+      border-color: $theme-color;
+    }
+
+    .ErrorMessage {
+      font-size: 1rem;
+      color: $theme-color;
+    }
+  }
+}

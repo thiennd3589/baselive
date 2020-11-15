@@ -1,8 +1,8 @@
 import { Obj } from "interfaces/common";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { State } from "redux-saga/reducers";
 import { queryCategory } from "redux-saga/global-actions";
+import { State } from "redux-saga/reducers";
 import "./styles.scss";
 
 interface CategoryItemProps {
@@ -48,7 +48,7 @@ const EventCategory = () => {
       <div className="Category">
         {category &&
           category.success &&
-          (category.response as Obj[])
+          ((category.response as Obj).data as Obj[])
             .slice(0, 3)
             .map((item) => (
               <CategoryItem

@@ -69,13 +69,13 @@ const BasicInfo = () => {
   useEffect(() => {
     if (categoryType && categoryType.success) {
       ref.current.categoryType = mapCategoryToDropdownOptions(
-        categoryType.response as Obj[]
+        (categoryType.response as Obj).data as Obj[]
       );
       redraw({});
     }
     if (category && category.success) {
       ref.current.category = mapCategoryToDropdownOptions(
-        category.response as Obj[]
+        (category.response as Obj).data as Obj[]
       );
       redraw({});
     }

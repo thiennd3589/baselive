@@ -1,9 +1,16 @@
 import { all } from "redux-saga/effects";
 import { queryEvents, queryCategory, queryCategoryType } from "./sagas/Events";
-import { signUp } from "./sagas/Login";
+import { logIn, signUp } from "./sagas/Login";
 
 function* sagas() {
-  yield all([queryEvents(), queryCategory(), signUp(), queryCategoryType()]);
+  yield all([
+    queryEvents(),
+    queryCategory(),
+    queryCategoryType(),
+
+    logIn(),
+    signUp(),
+  ]);
 }
 
 export default sagas;

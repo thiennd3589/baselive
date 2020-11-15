@@ -5,3 +5,4 @@ export const QUERY_CATEGORY_TYPE = "QUERY_CATEGORY_TYPE";
 
 //Login
 export const SIGN_UP = "SIGN_UP";
+export const LOG_IN = "LOG_IN";

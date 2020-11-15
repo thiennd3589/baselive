@@ -45,7 +45,7 @@ export function* doQuery(
   request?: Request<Obj>
 ) {
   try {
-    console.log(request);
+    console.log(method, request);
     let response;
     if (method === REQUEST_METHOD.GET) {
       response = yield query(url, method, request?.payload, baseURL);
@@ -53,11 +53,11 @@ export function* doQuery(
       response = yield query(url, method, undefined, baseURL, request?.payload);
     }
     if (response.status === 200) {
-      yield put({ type: request?.response?.success, payload: response.data });
+      yield put({ type: request?.response?.success, payload: response });
     } else if (response.status === 201) {
       yield put({ type: request?.response?.success, payload: response });
     } else {
-      yield put({ type: request?.response?.failure, payload: response.data });
+      yield put({ type: request?.response?.failure, payload: response });
     }
   } catch (error) {
     console.log(error);

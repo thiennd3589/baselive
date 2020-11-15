@@ -3,10 +3,11 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Global } from "global";
 import TextBox from "elements/TextBox";
-import google from "assets/social_network/google.svg";
-import { signUp } from "./actions";
-import facebook from "assets/social_network/facebook.svg";
+import { logIn, signUp } from "./actions";
 import { State } from "redux-saga/reducers";
+import { Obj } from "interfaces/common";
+import google from "assets/social_network/google.svg";
+import facebook from "assets/social_network/facebook.svg";
 import "./styles.scss";
 
 interface LoginState {
@@ -21,6 +22,7 @@ const Login = (props: LoginProps) => {
   const dispatch = useDispatch();
   let history = useHistory();
   const signUpResult = useSelector((state: State) => state.signUp);
+  const loginResult = useSelector((state: State) => state.logIn);
   const [state, setState] = useState<LoginState>({
     email: {
       value: "",
@@ -35,8 +37,19 @@ const Login = (props: LoginProps) => {
   });
 
   useEffect(() => {
-    console.log(signUpResult);
-  }, [signUpResult]);
+    if (loginResult && loginResult.success) {
+
+      //Save Token
+      const loginResponse = loginResult.response as Obj;
+      const token = ((loginResponse.headers as Obj)
+        .authorization as string).slice(7);
+      Global.user.token = token;
+      Global.isAuthenticated = true;
+
+      //Redirect
+      props.redirect ? history.push(props.redirect) : history.push("/");
+    }
+  }, [signUpResult, loginResult]);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState((prevState) => ({
@@ -50,8 +63,9 @@ const Login = (props: LoginProps) => {
   };
 
   const onLogin = () => {
-    Global.isAuthenticated = true;
-    history.push(`${props.redirect ? props.redirect : "/"}`);
+    dispatch(
+      logIn({ email: state.email.value, password: state.password.value })
+    );
   };
 
   const onSignUp = () => {
@@ -78,7 +92,6 @@ const Login = (props: LoginProps) => {
       }));
       return;
     }
-    console.log("signUp");
     dispatch(
       signUp({ email: state.email.value, password: state.password.value })
     );

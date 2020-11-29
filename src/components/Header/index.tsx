@@ -3,6 +3,7 @@ import {Menu} from "semantic-ui-react";
 import {Link, useLocation} from "react-router-dom";
 import logo from "assets/Logo.svg";
 import "./styles.scss";
+import {Global} from "../../global";
 
 interface HeaderProps {
     disableLogo?: boolean;
@@ -10,14 +11,6 @@ interface HeaderProps {
 
 const Header = (props: HeaderProps) => {
     const location = useLocation();
-    const accessToken = useRef<string|null>('');
-    const [,redraw] = useState({})
-    useEffect(() => {
-        console.log('Here1')
-        accessToken.current = localStorage.getItem('accessToken');
-        console.log(accessToken);
-        redraw({})
-    }, [])
 
     return (
         <div className="Header">
@@ -31,14 +24,13 @@ const Header = (props: HeaderProps) => {
                 )}
                 <div className="Menu">
                     <Menu secondary>
-                        <Menu.Item name="Become a host" as={Link} to="/createEvent"/>
+                        <Menu.Item name="Create Event" as={Link} to="/createEvent"/>
                         <Menu.Item name="Help" as={Link} to="/"/>
-                        {!accessToken.current && <><Menu.Item
+                        {!Global.user.token && <><Menu.Item
                             name="Sign up"
                             as={Link}
                             to="/login"
                             active={location.pathname === "/signup"}
-
                         />
                             <Menu.Item
                                 name="Log in"

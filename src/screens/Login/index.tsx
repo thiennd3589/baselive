@@ -49,7 +49,9 @@ const Login = (props: LoginProps) => {
           .authorization as string).slice(7);
         Global.user.token = token;
         Global.isAuthenticated = true;
-        //Redirect
+
+        localStorage.setItem('accessToken', token);
+        //Redirect;
         props.redirect ? history.push(props.redirect) : history.push("/");
         return;
       } else {

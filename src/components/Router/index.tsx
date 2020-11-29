@@ -13,6 +13,7 @@ const Router = () => {
 
     const [, redraw] = useState({});
     useEffect(() => {
+        console.log('here');
         Global.user.token = localStorage.getItem('accessToken');
         Global.isAuthenticated = Global.user.token ? true : false;
         redraw({});

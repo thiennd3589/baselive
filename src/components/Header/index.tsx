@@ -1,6 +1,6 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useState} from "react";
 import {Menu} from "semantic-ui-react";
-import {Link, useLocation} from "react-router-dom";
+import {Link, useHistory, useLocation} from "react-router-dom";
 import logo from "assets/Logo.svg";
 import "./styles.scss";
 import {Global} from "../../global";
@@ -11,6 +11,16 @@ interface HeaderProps {
 
 const Header = (props: HeaderProps) => {
     const location = useLocation();
+    const history = useHistory();
+    const [, redraw] = useState({});
+
+    const onLogout = () => {
+        localStorage.clear();
+        Global.user.token = null;
+        Global.isAuthenticated = false;
+        history.push('/');
+        redraw({});
+    }
 
     return (
         <div className="Header">
@@ -26,7 +36,7 @@ const Header = (props: HeaderProps) => {
                     <Menu secondary>
                         <Menu.Item name="Create Event" as={Link} to="/createEvent"/>
                         <Menu.Item name="Help" as={Link} to="/"/>
-                        {!Global.user.token && <><Menu.Item
+                        {!Global.user.token ? <><Menu.Item
                             name="Sign up"
                             as={Link}
                             to="/login"
@@ -37,7 +47,9 @@ const Header = (props: HeaderProps) => {
                                 as={Link}
                                 to="/login"
                                 active={location.pathname === "/login"}
-                            /></>}
+                            /></> :
+                        <Menu.Item name="Logout" onClick={onLogout}/>
+                        }
                     </Menu>
                 </div>
             </div>

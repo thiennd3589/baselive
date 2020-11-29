@@ -4,6 +4,10 @@
   .Container {
     display: flex;
     justify-content: space-between;
+
+    &.DisabledLogo {
+      justify-content: flex-end;
+    }
     .logoSection {
       cursor: pointer;
     }

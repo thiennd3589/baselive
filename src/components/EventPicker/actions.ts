@@ -6,6 +6,6 @@ export const queryEvents = (payload: any) => ({
   payload,
   response: {
     success: QUERY_EVENT_SUCCESS,
-    failed: QUERY_EVENT_FAILURE,
+    failure: QUERY_EVENT_FAILURE,
   },
 });

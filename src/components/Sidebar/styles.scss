@@ -1,0 +1,58 @@
+@import "../../variables.scss";
+.Sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f7fa;
+  .Brand {
+    display: flex;
+    align-items: center;
+    margin: 20px 25px;
+    cursor: pointer;
+    span {
+      font-size: 2.57rem;
+      font-weight: 600;
+      margin-left: 10px;
+      color: $theme-color;
+    }
+  }
+
+  .Event {
+    margin: 20px 25px 40px 25px;
+    .Name {
+      font-size: 1.7rem;
+      font-weight: 600;
+      line-height: 36px;
+    }
+    .Time {
+      font-size: 1rem;
+      font-weight: 300;
+    }
+  }
+
+  .Menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .Title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      line-height: 25px;
+      padding: 10px 25px;
+    }
+    .MenuItem {
+      font-size: 1.2rem;
+      font-weight: 400;
+      padding: 10px 25px;
+      color: #484848;
+      &.Active {
+        background-color: #fff;
+      }
+      span {
+        margin-left: 15px;
+      }
+      i {
+        color: #bdbdbd;
+      }
+    }
+  }
+}

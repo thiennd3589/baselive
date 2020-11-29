@@ -1,0 +1,26 @@
+.Detail {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .Sidebar {
+    flex: 1;
+  }
+  .Main {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px 0;
+    width: 100%;
+    .Header {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    .Description {
+      .editor {
+        width: 615px;
+      }
+    }
+  }
+}

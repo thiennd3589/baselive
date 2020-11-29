@@ -12,7 +12,7 @@ export const signUp = (payload: Obj) => ({
   payload,
   response: {
     success: SIGN_UP_SUCCESS,
-    failed: SIGN_UP_FAILURE,
+    failure: SIGN_UP_FAILURE,
   },
 });
 
@@ -21,6 +21,6 @@ export const logIn = (payload: Obj) => ({
   payload,
   response: {
     success: LOG_IN_SUCCESS,
-    failed: LOG_IN_FAILURE,
+    failure: LOG_IN_FAILURE,
   },
 });

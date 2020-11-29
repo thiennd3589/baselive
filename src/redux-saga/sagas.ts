@@ -1,5 +1,13 @@
 import { all } from "redux-saga/effects";
-import { queryEvents, queryCategory, queryCategoryType } from "./sagas/Events";
+import { uploadImage } from "./sagas/Common";
+import {
+  queryEvents,
+  queryCategory,
+  queryCategoryType,
+  createEvent,
+  updateEvent,
+  createTicket,
+} from "./sagas/Events";
 import { logIn, signUp } from "./sagas/Login";
 
 function* sagas() {
@@ -7,7 +15,12 @@ function* sagas() {
     queryEvents(),
     queryCategory(),
     queryCategoryType(),
-
+    createEvent(),
+    updateEvent(),
+    createTicket(),
+    //
+    uploadImage(),
+    //
     logIn(),
     signUp(),
   ]);

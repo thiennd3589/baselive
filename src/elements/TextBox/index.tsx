@@ -20,7 +20,7 @@ const TextBox = (props: TextBoxProps) => {
   };
 
   const onEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if ((event.key === "Enter")) {
+    if (event.key === "Enter") {
       props.onEnter && props.onEnter();
     }
   };

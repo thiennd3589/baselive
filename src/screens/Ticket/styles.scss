@@ -1,0 +1,180 @@
+@import "../../variables.scss";
+.Ticket {
+  display: flex;
+  .Sidebar {
+    flex: 1;
+    min-height: 100vh;
+  }
+  .Main {
+    flex: 4;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .SubmitSection {
+      display: flex;
+      justify-content: flex-end;
+      margin: 20px;
+      padding-top: 10px;
+      button {
+        font-weight: normal;
+        font-size: 1.2rem;
+        line-height: 25px;
+        height: 2rem;
+        &.Continue {
+          background-color: $theme-color;
+          color: #fff;
+        }
+
+        &.Discard {
+          background: #ffffff;
+          margin-right: 20px;
+        }
+      }
+    }
+
+    .CreateTicket {
+      .sidebar {
+        background-color: #fff;
+        padding: 10px;
+        .Title {
+          font-weight: 600;
+          font-size: 1.7rem;
+          line-height: 36px;
+          color: #484848;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #dbdbdb;
+          margin-bottom: 20px;
+        }
+        .Form {
+          .TextBox {
+            .Input {
+              width: 100% !important;
+            }
+          }
+
+          .DateTime {
+            .Time {
+              display: flex;
+              margin: 10px 0;
+              .DateTimePicker {
+                .Picker {
+                  label {
+                    color: #464646;
+                  }
+                }
+                &:last-child {
+                  margin-left: 10px;
+                }
+              }
+            }
+          }
+        }
+
+        .SubmitSection {
+          margin-top: 100px;
+          padding-top: 10px;
+          border-top: 1px solid #dbdbdb;
+        }
+      }
+    }
+    .AllTicket {
+      padding: 20px;
+      margin: 20px;
+      border: 1px solid #dfe0eb;
+      border-radius: 8px;
+
+      .TicketItem {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1.5px solid #dfe0eb;
+        padding: 20px 5px;
+
+        &.TableHeader {
+          color: #9fa2b4 !important;
+          span {
+            color: #9fa2b4 !important;
+            font-size: 1rem;
+          }
+
+          &:hover {
+            background-color: unset !important;
+          }
+        }
+        .Detail {
+          display: flex;
+          flex-direction: column;
+          flex: 2;
+          h3 {
+            margin: 0;
+          }
+          span {
+            color: #c5c7cd;
+            font-size: 0.9rem;
+          }
+        }
+        .Info {
+          display: flex;
+          flex: 1;
+          justify-content: flex-end;
+          > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 20px;
+            min-width: 50px;
+
+            &.More {
+              cursor: pointer;
+            }
+          }
+        }
+
+        &:hover {
+          background-color: #dfe0eb;
+        }
+      }
+
+      .Title {
+        h3 {
+          font-weight: 500;
+          font-size: 1.35rem;
+          line-height: 28px;
+          letter-spacing: 0.4px;
+          color: #252733;
+        }
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .Empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+      text-align: center;
+
+      i {
+        font-size: 4rem;
+        color: rgba(0, 0, 0, 0.12);
+        margin: 0;
+        padding: 0;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 1.7rem;
+      }
+    }
+    .ToggleCreateTicket {
+      background: #ffffff;
+      border: 1px solid #464646;
+      box-shadow: 0px 2px 16px #ececec;
+      border-radius: 5px;
+      height: 3rem;
+      width: 14rem;
+    }
+  }
+}

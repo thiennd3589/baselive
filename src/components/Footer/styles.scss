@@ -1,0 +1,52 @@
+.Footer {
+  border-top: 1px solid #dbdbdb;
+
+  .Content {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 15%;
+    .Information {
+      .Item {
+        display: flex;
+        flex-direction: column;
+        font-weight: 300;
+        color: #767676 !important;
+        a {
+          text-decoration: none;
+          &:hover {
+            text-decoration-line: underline;
+          }
+        }
+      }
+    }
+  }
+
+  .Copyright {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10%;
+    border-top: 1px solid #dbdbdb;
+    color: #767676 !important;
+    padding: 25px 0;
+    .Logo {
+      display: flex;
+      align-items: center;
+      i {
+        margin-left: 20px;
+      }
+      span {
+        margin-left: 5px;
+      }
+    }
+
+    .Contact {
+      display: flex;
+      justify-content: space-evenly;
+      min-width: 300px;
+      a {
+        text-decoration: none;
+        color: #767676 !important;
+      }
+    }
+  }
+}

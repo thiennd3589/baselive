@@ -1,0 +1,179 @@
+@import "../../variables.scss";
+
+.BasicInfoMin {
+  width: 100%;
+  display: flex;
+  .Sidebar {
+    flex: 1;
+  }
+  .Main {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px 0;
+    width: 100%;
+    .BasicSection {
+      .Form {
+        width: 100%;
+        > .TextBox {
+          margin: 30px 0;
+          width: 100%;
+          .Input {
+            input {
+              font-size: 1.28rem;
+            }
+          }
+        }
+
+        .EventType {
+          display: flex;
+          .CustomDropdown {
+            width: 100%;
+            max-width: 250px;
+            &:last-child {
+              margin-left: 30px;
+            }
+          }
+        }
+
+        .TagsSection {
+          margin-top: 40px;
+
+          .Label {
+            h3 {
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 600;
+              font-size: 1.7rem;
+              line-height: 36px;
+              margin: 0;
+            }
+
+            span {
+              font-weight: 300;
+              font-size: 1rem;
+              line-height: 21px;
+              letter-spacing: 0.14px;
+            }
+          }
+
+          .InputSection {
+            display: flex;
+            .TextBox {
+              margin: 20px 0;
+              .Input {
+                width: 36rem;
+              }
+            }
+            .AddButton {
+              margin: 20px 0;
+              padding: 0 20px;
+              margin-left: 20px;
+
+              &:focus {
+                outline: none;
+              }
+            }
+          }
+
+          .Tags {
+            display: flex;
+            flex-wrap: wrap;
+
+            .Tag {
+              font-size: 1.2rem;
+              line-height: 22px;
+              background: #dbdbdb;
+              backdrop-filter: blur(54.37px);
+              border-radius: 13px;
+              padding: 10px;
+              color: #000;
+              margin-right: 10px;
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .DateTimeSection {
+      display: flex;
+      min-width: 7rem;
+      .Content {
+        .Form {
+          .SelectButton {
+            button {
+              height: $input-height;
+              width: 16rem;
+              cursor: pointer;
+              background: #ffffff;
+              border: 1px solid #dbdbdb;
+              border-radius: 5px;
+              font-size: 1.7rem;
+              line-height: 36px;
+              color: #484848;
+              margin: 20px 0;
+              &.Active {
+                background: $theme-color;
+                color: #fff;
+              }
+              &:last-child {
+                margin-left: 20px;
+              }
+              &:focus {
+                outline: none;
+              }
+            }
+          }
+          .DateTime {
+            display: flex;
+            flex-direction: column;
+            > span {
+              font-weight: 300;
+              font-size: 1rem;
+              line-height: 21px;
+              letter-spacing: 0.14px;
+              color: #464646;
+            }
+            .Time {
+              display: flex;
+              margin: 20px 0;
+              &:last-child {
+                margin-top: 0;
+              }
+              .DateTimePicker {
+                &:last-child {
+                  margin-left: 20px;
+                }
+              }
+            }
+          }
+
+          .DisplaySelection {
+            .Checkbox {
+              margin: 10px 0;
+            }
+          }
+        }
+      }
+    }
+
+    .SubmitSection {
+      display: flex;
+      justify-content: flex-end;
+      width: 70%;
+      button {
+        &.Continue {
+          background-color: $theme-color;
+          color: #fff;
+        }
+
+        &.Discard {
+          background: #ffffff;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}

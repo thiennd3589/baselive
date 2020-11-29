@@ -1,0 +1,35 @@
+.InforSectionContainer {
+  display: flex;
+  .Icon {
+    margin-right: 15px;
+    i {
+      color: rgba(0, 0, 0, 0.12);
+      font-size: 4rem;
+      position: relative;
+      top: 26px;
+    }
+  }
+  .Title {
+    display: flex;
+    align-items: center;
+    .Text {
+      h2 {
+        font-size: 2.6rem;
+        font-weight: 600;
+        margin: 0;
+      }
+      p {
+        margin: 0;
+      }
+      span {
+        font-weight: 300;
+        font-size: 1rem;
+        line-height: 21px;
+        letter-spacing: 0.14px;
+      }
+    }
+  }
+}
+.ui.divider:not(.vertical):not(.horizontal) {
+  width: 70%;
+}

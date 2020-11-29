@@ -21,8 +21,8 @@ code {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 2px;
+  height: 2px;
 }
 
 button,
@@ -38,16 +38,16 @@ input {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
   background: rgba($color: #000000, $alpha: 0.1);
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);

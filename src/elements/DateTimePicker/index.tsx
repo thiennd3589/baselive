@@ -9,6 +9,7 @@ interface DatePickerProps {
   label?: string;
   type?: string;
   icon?: string;
+  disabledIcon?: boolean;
 
   onChange?: (e: React.SyntheticEvent<HTMLElement, Event>, data: any) => void;
 }
@@ -23,7 +24,7 @@ const DateTimePicker = (props: DatePickerProps) => {
 
   const renderDateInput = () => (
     <div className="DateTimePicker">
-      <Icon name="calendar alternate outline" />
+      {props.disabledIcon ? null : <Icon name="calendar alternate outline" />}
       <div className="Picker">
         {props.label && <label>{props.label}</label>}
         <DateInput

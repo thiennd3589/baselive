@@ -1,13 +1,26 @@
+import { Obj } from "interfaces/common";
 import React from "react";
-import { Dropdown, DropdownItemProps } from "semantic-ui-react";
+import {
+  Dropdown,
+  DropdownItemProps,
+  DropdownProps as SemanticDropdownProps,
+} from "semantic-ui-react";
 import "./styles.scss";
 
 interface DropdownProps {
   placeholder?: string;
   options: DropdownItemProps[];
+  onChange: (data: SemanticDropdownProps) => void;
 }
 
 const CustomDropdown = (props: DropdownProps) => {
+  const onChange = (
+    event: React.SyntheticEvent<HTMLElement, Event>,
+    data: SemanticDropdownProps
+  ) => {
+    props.onChange(data);
+  };
+
   return (
     <div className="CustomDropdown">
       <Dropdown
@@ -16,6 +29,7 @@ const CustomDropdown = (props: DropdownProps) => {
         selection
         options={props.options}
         icon="angle down"
+        onChange={onChange}
       />
     </div>
   );

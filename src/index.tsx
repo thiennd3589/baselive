@@ -6,6 +6,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import store from "redux-saga/store";
 import "semantic-ui-css/semantic.min.css";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "./index.scss";
 
 ReactDOM.render(

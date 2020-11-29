@@ -32,12 +32,12 @@ const EventCategory = () => {
     requestData();
   }, []);
 
-  useEffect(() => {
-    console.log(category);
-  }, [category]);
+  useEffect(() => {}, [category]);
 
   const requestData = () => {
-    dispatch(queryCategory({ type: 1 }));
+    dispatch(
+      queryCategory({ type: "category", referTableId: "", referTableName: "" })
+    );
   };
 
   return (

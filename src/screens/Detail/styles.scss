@@ -1,3 +1,4 @@
+@import "../../variables.scss";
 .Detail {
   width: 100%;
   display: flex;
@@ -20,6 +21,26 @@
     .Description {
       .editor {
         width: 615px;
+      }
+    }
+    .SubmitSection {
+      display: flex;
+      justify-content: flex-end;
+      width: 70%;
+      button {
+        font-weight: normal;
+        font-size: 1.2rem;
+        line-height: 25px;
+        height: 2rem;
+        &.Continue {
+          background-color: $theme-color;
+          color: #fff;
+        }
+
+        &.Discard {
+          background: #ffffff;
+          margin-right: 20px;
+        }
       }
     }
   }

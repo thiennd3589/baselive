@@ -7,7 +7,10 @@ import { Provider } from "react-redux";
 import store from "redux-saga/store";
 import "semantic-ui-css/semantic.min.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import "./index.scss";
+toast.configure();
 
 ReactDOM.render(
   <Provider store={store}>

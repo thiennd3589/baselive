@@ -6,7 +6,12 @@ import {
   CategoryType,
   CreateEventResult,
   CreateTicketResult,
+  Event,
+  EventInHanoi,
+  ExperienceEvent,
   ImageUploaded,
+  Ticket,
+  TrendingEvent,
   UpdateEventResult,
 } from "./global-reducers";
 import { LogIn, SignUp } from "screens/Login/reducers";
@@ -14,11 +19,19 @@ import { LogIn, SignUp } from "screens/Login/reducers";
 export const state = combineReducers({
   //
   imageUploaded: ImageUploaded,
+
   //events
   events: Events,
   createEventResult: CreateEventResult,
   updateEventResult: UpdateEventResult,
+  trendingEvent: TrendingEvent,
+  experieneEvent: ExperienceEvent,
+  eventInHanoi: EventInHanoi,
+  event: Event,
+
+  //ticket
   createTicketResult: CreateTicketResult,
+  ticket: Ticket,
   //category
   category: Category,
   categoryType: CategoryType,

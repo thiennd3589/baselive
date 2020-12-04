@@ -157,10 +157,14 @@
       }
     }
 
+    .ui.divider:not(.vertical):not(.horizontal) {
+      width: 100%;
+    }
+
     .SubmitSection {
       display: flex;
       justify-content: flex-end;
-      width: 70%;
+      width: 100%;
       button {
         font-weight: normal;
         font-size: 1.2rem;

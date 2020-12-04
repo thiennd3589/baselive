@@ -4,4 +4,10 @@
   border-radius: 5px;
   padding: 10px;
   min-height: 300px;
+
+  &.readonly {
+    .rdw-editor-toolbar {
+      display: none;
+    }
+  }
 }

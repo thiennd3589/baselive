@@ -16,7 +16,7 @@ export const handleEventInfoForRequest = (eventInfo: EventInfo) => {
     eventImage: eventInfo.eventImage,
     summary: eventInfo.summary,
     description: eventInfo.description,
-    status: 0,
+    status: 1,
     publishDate: eventInfo.publishDate,
     publishTime: eventInfo.publishTime,
     googleSlideUrl: eventInfo.googleSlideUrl,

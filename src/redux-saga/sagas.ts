@@ -7,8 +7,13 @@ import {
   createEvent,
   updateEvent,
   createTicket,
+  queryTrendingEvent,
+  queryExperienceEvent,
+  queryEventInHanoi,
+  querySingleEvent,
 } from "./sagas/Events";
 import { logIn, signUp } from "./sagas/Login";
+import { queryTicket } from "./sagas/Ticket";
 
 function* sagas() {
   yield all([
@@ -18,6 +23,11 @@ function* sagas() {
     createEvent(),
     updateEvent(),
     createTicket(),
+    queryTrendingEvent(),
+    queryExperienceEvent(),
+    queryEventInHanoi(),
+    querySingleEvent(),
+    queryTicket(),
     //
     uploadImage(),
     //

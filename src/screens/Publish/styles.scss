@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .Publish {
   width: 100%;
   display: flex;
@@ -21,13 +23,23 @@
 
     .Content {
       width: 62%;
-
+      h1 {
+        border-bottom: 1px solid #dbdbdb;
+        padding-bottom: 10px;
+      }
       .PreviewItem {
         display: flex;
         width: 100%;
-
+        border: 1px solid #dbdbdb;
+        box-sizing: border-box;
+        box-shadow: 0px 2px 16px #ececec;
+        border-radius: 5px;
+        padding: 10px;
+        h2 {
+          margin: 0;
+        }
         .Image {
-          flex: 1;
+          flex: 2;
           width: 100%;
           img {
             width: 100%;
@@ -36,6 +48,89 @@
 
         .Info {
           flex: 2;
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          margin-left: 10px;
+          > div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .Category {
+              font-size: 0.9rem;
+              font-weight: 600;
+              color: #4f4f4f;
+            }
+
+            .MainInfo {
+              h2 {
+                font-weight: 600;
+                font-size: 1.7rem;
+                line-height: 36px;
+              }
+
+              p {
+                color: #484a4f;
+              }
+            }
+
+            .Preview {
+              border-top: 1px solid #dbdbdb;
+              text-align: center;
+              color: #4183c4;
+              padding-top: 10px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      h3 {
+        margin: 0;
+      }
+
+      .radio.checkbox {
+        margin: 5px 0;
+      }
+
+      .Privacy {
+        margin: 30px 0;
+      }
+
+      .Schedule {
+        margin: 30px 0;
+        > div {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .DateTime {
+        display: flex;
+        justify-content: space-evenly;
+        .DateTimePicker {
+          &:last-child {
+            margin-left: 10px;
+          }
+        }
+      }
+
+      .SubmitSection {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin: 30px 0;
+        border-top: 1px solid #dbdbdb;
+        padding: 20px;
+
+        .Button {
+          font-weight: normal;
+          font-size: 1.2rem;
+          line-height: 25px;
+          height: 2rem;
+          background-color: $theme-color;
+          color: #fff;
         }
       }
     }

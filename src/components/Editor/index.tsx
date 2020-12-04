@@ -3,10 +3,10 @@ import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import "draft-js/dist/Draft.css";
 import "./styles.scss";
-import { Obj } from "interfaces/common";
 
 interface EditorProps {
   value?: any;
+  readonly?: boolean;
   onChange?: (data: any) => void;
 }
 interface EditorCompState {
@@ -35,7 +35,14 @@ class EditorContainer extends React.Component<EditorProps, EditorCompState> {
   }
 
   componentDidMount() {
-    console.log("abc");
+    this.props.value &&
+      this.state.updateFlag &&
+      this.setState({
+        editorState: EditorState.createWithContent(
+          convertFromRaw(JSON.parse(this.props.value))
+        ),
+        updateFlag: false,
+      });
   }
 
   onEditorStateChange = (editorState: EditorState) => {
@@ -55,8 +62,9 @@ class EditorContainer extends React.Component<EditorProps, EditorCompState> {
   render() {
     const { editorState } = this.state;
     return (
-      <div className="editor">
+      <div className={this.props.readonly ? "editor readonly" : "editor"}>
         <Editor
+          readOnly={this.props.readonly}
           editorState={editorState}
           onEditorStateChange={this.onEditorStateChange}
           toolbar={{

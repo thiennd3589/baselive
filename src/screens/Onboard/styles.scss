@@ -28,5 +28,44 @@
 
   .Content {
     margin-top: 100px;
+
+    .Events {
+      margin-top: 30px;
+      width: 100%;
+      > .Title {
+        font-weight: 600;
+        font-size: 2rem;
+        line-height: 39px;
+      }
+      .EventsContainer {
+        .EventItem {
+          padding: 5px;
+          width: 240px;
+          cursor: pointer;
+          .Image {
+            width: 100%;
+            img {
+              width: 100%;
+              border-radius: 5px;
+            }
+          }
+          .Info {
+            .Category {
+              font-weight: 600;
+              color: #002b37;
+              font-size: 0.9rem;
+            }
+            .Title {
+              font-size: 1.28rem;
+              font-weight: 600;
+              color: #464646;
+              margin: 5px 0;
+              line-height: 22px;
+              letter-spacing: 0.17px;
+            }
+          }
+        }
+      }
+    }
   }
 }

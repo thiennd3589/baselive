@@ -2,6 +2,7 @@ import Axios from "axios";
 import { Global } from "global";
 import { Obj, Request } from "interfaces/common";
 import { put, takeEvery, takeLatest } from "redux-saga/effects";
+import { toast } from 'react-toastify';
 
 export const BASE_URI = "http://45.77.24.242:8080/api/v1/";
 export enum REQUEST_METHOD {
@@ -19,7 +20,7 @@ export const configAxios = (
   accessToken?: boolean,
   data?: Obj
 ) => {
-  accessToken && console.log(accessToken);
+  
   return accessToken
     ? {
         url,
@@ -51,7 +52,6 @@ export const query = async (
   accessToken?: boolean,
   data?: Obj
 ) => {
-  console.log(data);
   const config = configAxios(url, method, params, baseURL, accessToken, data);
   return Axios(config);
 };
@@ -83,7 +83,6 @@ export function* doQuery(
         request?.payload
       );
     }
-    yield console.log(response);
     if (response.status === 200) {
       yield put({ type: request?.response?.success, payload: response });
     } else if (response.status === 201) {
@@ -142,4 +141,28 @@ export const mapCategoryToDropdownOptions = (category: Obj[]) => {
     value: item.name,
     id: item.id,
   }));
+};
+
+export const notificationSuccess = (params: Obj) => {
+  toast.success(params.content, {
+    position: 'top-right',
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+};
+
+export const notificationError = (params: Obj) => {
+  toast.error(params.content, {
+    position: 'top-right',
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
 };

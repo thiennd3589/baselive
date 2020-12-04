@@ -122,6 +122,7 @@ const Ticket = () => {
       startTime: ref.current.endSale,
       endTime: ref.current.endTime,
     };
+    console.log(params);
     dispatch(createTicket(params));
     setcreateTicketVisible(false);
   };

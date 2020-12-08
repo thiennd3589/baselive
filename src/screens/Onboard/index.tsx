@@ -34,7 +34,7 @@ const EventItem = (props: EventItemProps) => {
     <div className="EventItem" onClick={redirect}>
       <div className="Image">
         <img
-          src={props.image ? props.image : "https://picsum.photos/300/200"}
+          src={props.image ? props.image : "https://picsum.photos/1920/1080"}
           alt={props.title}
         />
       </div>

@@ -83,7 +83,11 @@ const EventPage = () => {
         <div className="Container">
           <div className="Background">
             <img
-              src={ref.current.eventImage as string}
+              src={
+                ref.current.eventImage
+                  ? (ref.current.eventImage as string)
+                  : "https://picsum.photos/1920/1080"
+              }
               alt={ref.current.title as string}
             />
           </div>
@@ -91,7 +95,11 @@ const EventPage = () => {
             <div className="HeaderContent">
               <div className="Image">
                 <img
-                  src={ref.current.eventImage as string}
+                  src={
+                    ref.current.eventImage
+                      ? (ref.current.eventImage as string)
+                      : "https://picsum.photos/1920/1080"
+                    }
                   alt={ref.current.title as string}
                 />
               </div>

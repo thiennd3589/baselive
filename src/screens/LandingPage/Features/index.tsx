@@ -77,8 +77,8 @@ const Features = () => {
   return (
     <div className="Features">
       <div className="Title">
-        <h2>Discover the key features</h2>
-        <p>Robust Backend Tools That Support Every Program Need</p>
+        <h2>{t("K_56")}</h2>
+        <p>{t("K_57")}</p>
       </div>
       <div className="Content">
         <div className="FeatureContainer">

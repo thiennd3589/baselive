@@ -7,22 +7,23 @@ import mac1 from "assets/landing-page/features/mac1.png";
 import mac2 from "assets/landing-page/features/mac2.png";
 import mac3 from "assets/landing-page/features/mac3.png";
 import "./styles.scss";
+import { useTranslation } from "react-i18next";
 
 const features = [
   {
-    text: "Actionable analytics and reporting",
+    text: "K_35",
     icon: icon1,
   },
   {
-    text: "Automation marketing integrated",
+    text: "K_36",
     icon: icon2,
   },
   {
-    text: "Powerful call to action",
+    text: "K_37",
     icon: icon3,
   },
   {
-    text: "Power up engagement and connection",
+    text: "K_38",
     icon: icon4,
   },
 ];
@@ -30,31 +31,28 @@ const features = [
 const featureDetail = [
   {
     img: mac1,
-    title: "ACTIONABLE ANALYTICS AND REPORTING",
-    detail:
-      "With Baselive's powerful intelligence engine you can understand performance, track individual account engagement data and indentify lead that are ready next step for the next step",
+    title: "K_39",
+    detail: "K_40",
   },
   {
     img: mac2,
-    title: "Automation marketing integrated",
-    detail:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nisi est nihil blanditiis provident ullam explicabo, dicta doloribus vel tempore quas voluptas veniam optio! Optio sapiente ratione commodi dolor. Repudiandae?",
+    title: "K_41",
+    detail: "K_42",
   },
   {
     img: mac3,
-    title: "Powerful call to action",
-    detail:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nisi est nihil blanditiis provident ullam explicabo, dicta doloribus vel tempore quas voluptas veniam optio! Optio sapiente ratione commodi dolor. Repudiandae?",
+    title: "K_43",
+    detail: "K_44",
   },
   {
     img: mac3,
-    title: "Power up engagement and connection",
-    detail:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor nisi est nihil blanditiis provident ullam explicabo, dicta doloribus vel tempore quas voluptas veniam optio! Optio sapiente ratione commodi dolor. Repudiandae?",
+    title: "K_45",
+    detail: "K_46",
   },
 ];
 
 const Features = () => {
+  const { t } = useTranslation();
   const [featureIndex, setFeatureIndex] = useState(0);
 
   const onClick = (index: number) => {
@@ -69,8 +67,8 @@ const Features = () => {
           <img src={img} alt="detail" />
         </div>
         <div className="Info">
-          <h3>{title}</h3>
-          <p>{detail}</p>
+          <h3>{t(title)}</h3>
+          <p>{t(detail)}</p>
         </div>
       </div>
     );
@@ -94,7 +92,7 @@ const Features = () => {
               }`}
               key={index}
             >
-              <p>{feature.text}</p>
+              <p>{t(feature.text)}</p>
               <div className="Image">
                 <img src={feature.icon} alt="icon" />
               </div>

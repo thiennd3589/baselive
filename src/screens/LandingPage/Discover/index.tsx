@@ -7,8 +7,10 @@ import { State } from "redux-saga/reducers";
 import { queryTrendingEvent } from "redux-saga/global-actions";
 import { EventItem } from "screens/Onboard";
 import "./styles.scss";
+import { useTranslation } from "react-i18next";
 
 const Discover = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const dispatch = useDispatch();
   const { trendingEvent, category } = useSelector(
@@ -51,7 +53,7 @@ const Discover = () => {
   return (
     <div className="Discover">
       <div className="Title">
-        <h2>Discover events on Baselive</h2>
+        <h2>{t("K_26")}</h2>
       </div>
       <div className="EventNav">
         <h3>Most common</h3>

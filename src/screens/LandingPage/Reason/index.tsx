@@ -7,12 +7,12 @@ import decor1 from "assets/landing-page/reason/decor1.png";
 import decor2 from "assets/landing-page/reason/decor2.png";
 import decor3 from "assets/landing-page/reason/decor3.png";
 import "./styles.scss";
+import { useTranslation } from "react-i18next";
 
 const reasonItem = [
   {
-    title: "First all-in-one event platform optimized for connecting",
-    detail:
-      "Organizers can achieve the same goals of their offline events by customizing their Baselive events to fit the requirements, whether it's a 50-person recruiting event, a 500-person all-hands meeting, or a 50,000-person annual conference. Hopin is built knowing every event is unique.",
+    title: "K_6",
+    detail: "K_7",
     icon: {
       name: "share alternate",
       //   color: "#069697",
@@ -23,9 +23,8 @@ const reasonItem = [
     decor: decor1,
   },
   {
-    title: "Host your most interactive online event yet",
-    detail:
-      "Baselive is a virtual venue with multiple interactive areas that are optimized for connecting and engaging. Attendees can move in and out of rooms just like an in-person event and enjoy the content and connections you've created for them. ",
+    title: "K_8",
+    detail: "K_9",
     icon: {
       name: "rss",
       //   color: "#EA3D2F",
@@ -36,9 +35,8 @@ const reasonItem = [
     decor: decor2,
   },
   {
-    title: "Turn audience engagement into actionable data",
-    detail:
-      "Patented back-end analytics capture audience engagement data to enable marketers with actionable insights and digestible profiles of buyer interest. Seamlessly integrate that intent to CRM or Baselive's Marketing Automation so you can inform sales, impact nurture and optimize program efficiency.",
+    title: "K_10",
+    detail: "K_11",
     icon: {
       name: "chart line",
       //   color: "#F3AA18",
@@ -51,10 +49,11 @@ const reasonItem = [
 ];
 
 const Reason = () => {
+  const { t } = useTranslation();
   return (
     <div className="Reason">
       <div className="Title">
-        <h2>Why Baselive?</h2>
+        <h2>{t("K_5")}</h2>
       </div>
       {reasonItem.map((item, index) => (
         <div className="ReasonItem" key={index}>
@@ -66,8 +65,8 @@ const Reason = () => {
             </div>
 
             <div className="Content">
-              <h2>{item.title}</h2>
-              <p>{item.detail}</p>
+              <h2>{t(item.title)}</h2>
+              <p>{t(item.detail)}</p>
             </div>
           </div>
           <div className="Images">

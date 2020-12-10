@@ -1,55 +1,48 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Icon, SemanticICONS } from "semantic-ui-react";
 import "./styles.scss";
 
 const usages = [
   {
     icon: "lightning",
-    title: "Workshop",
-    detail:
-      "Teach a lesson and breakout into groups. Come back together for another lesson, followed by one-on-one meetings.",
+    title: "K_12",
+    detail: "K_13",
   },
   {
     icon: "home",
-    title: "Conference",
-    detail:
-      "Host a full scale conference with multi session, full stage, networking.",
+    title: "K_14",
+    detail: "K_15",
   },
   {
     icon: "video camera",
-    title: "Webinar",
-    detail:
-      "Webinar tend to be one sided. Audience are passively listener. Baselive powers up their engagement.",
+    title: "K_16",
+    detail: "K_17",
   },
   {
     icon: "arrows alternate horizontal",
-    title: "Hybirds event",
-    detail:
-      "Host a physical event, then stream it into Baselive with interactive segment to your audience",
+    title: "K_18",
+    detail: "K_19",
   },
   {
     icon: "discourse",
-    title: "Course",
-    detail:
-      "Event on Baselive for education with full feature for gaining experience and connecting.",
+    title: "K_20",
+    detail: "K_21",
   },
   {
     icon: "keyboard",
-    title: "Fair show",
-    detail:
-      "Build a virtual expo in Baselive that has a floor of interactive vendor booths with customizable buttons.",
+    title: "K_22",
+    detail: "K_23",
   },
 ];
 
 const Instruction = () => {
+  const { t } = useTranslation();
   return (
     <div className="Instruction">
       <div className="Title">
-        <h2>Way to use Baselive</h2>
-        <p>
-          Create events with unlimited possibilities, and craft your event
-          schedule for a uniquely great experience every time.
-        </p>
+        <h2>{t("K_24")}</h2>
+        <p>{t("K_25")}</p>
       </div>
       <div className="Usages">
         {usages.map((item, index) => (
@@ -60,8 +53,8 @@ const Instruction = () => {
               </div>
             </div>
             <div className="Content">
-              <h3>{item.title}</h3>
-              <p>{item.detail}</p>
+              <h3>{t(item.title)}</h3>
+              <p>{t(item.detail)}</p>
             </div>
           </div>
         ))}

@@ -8,20 +8,19 @@ import img3 from "assets/landing-page/intro/img3.png";
 import img4 from "assets/landing-page/intro/img4.png";
 import img5 from "assets/landing-page/intro/img5.png";
 import "./styles.scss";
+import { useTranslation } from "react-i18next";
 
 const IntroLanding = () => {
+  const { t } = useTranslation();
   return (
     <div className="IntroLanding">
       <div className="Title">
-        <h1>A unique virtual video streaming platform</h1>
-        <p>
-          Baselive is an online event platform where you can create engaging
-          virtual events that connect people around the world
-        </p>
+        <h1>{t("K_1")}</h1>
+        <p>{t("K_2")}</p>
       </div>
       <div className="Buttons">
-        <Button text="Download" className="DownloadButton" />
-        <Button text="Free trial" className="FreeTrialButton" />
+        <Button text={t("K_3")} className="DownloadButton" />
+        <Button text={t("K_4")} className="FreeTrialButton" />
       </div>
       <div className="Images">
         <div className="Background">

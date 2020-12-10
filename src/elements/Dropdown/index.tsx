@@ -1,4 +1,3 @@
-import { Obj } from "interfaces/common";
 import React from "react";
 import {
   Dropdown,

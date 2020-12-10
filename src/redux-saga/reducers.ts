@@ -10,6 +10,7 @@ import {
   EventInHanoi,
   ExperienceEvent,
   ImageUploaded,
+  Language,
   Ticket,
   TrendingEvent,
   UpdateEventResult,
@@ -42,6 +43,7 @@ export const state = combineReducers({
 
   //local
   basicInfoLocal: BasicInfoLocal,
+  language: Language,
 });
 
 export type State = ReturnType<typeof state>;

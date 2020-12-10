@@ -10,6 +10,7 @@
     .TopSection {
       padding: 15px 0px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid $border-color;
       .LogoSection {
@@ -27,6 +28,11 @@
         }
       }
       .SocialLink {
+        display: flex;
+        align-items: center;
+        .CustomDropdown .ui.fluid.dropdown {
+          height: unset;
+        }
         a {
           margin: 0 10px;
           color: #78909c;

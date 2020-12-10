@@ -4,41 +4,41 @@ import icon2 from "assets/landing-page/features/icon2.png";
 import icon3 from "assets/landing-page/features/icon3.png";
 import icon4 from "assets/landing-page/features/icon4.png";
 import "./styles.scss";
+import { useTranslation } from "react-i18next";
 
 const goals = [
   {
-    name: "Ideate - co founder",
+    name: "K_47",
     year: "2020",
-    detail: "Turn your idea from concept to MVP. Finding co founder. ",
+    detail: "K_48",
     icon: icon4,
   },
   {
-    name: "Webinar all in one",
+    name: "K_49",
     year: "2021",
-    detail:
-      "Develop all function to support all kind of online streaming event such as webinar, conference, workshop, course and so on. ",
+    detail: "K_50",
     icon: icon2,
   },
   {
-    name: "System architecture",
+    name: "K_51",
     year: "2022",
-    detail:
-      "Expand system architecture and back end by developing server to scale up beyond VietNam",
+    detail: "K_52",
     icon: icon3,
   },
   {
-    name: "Automation marketing",
+    name: "K_53",
     year: "2023",
-    detail: "Integrate sms, email, automation marketing system. ",
+    detail: "K_54",
     icon: icon1,
   },
 ];
 
 const Approach = () => {
+  const { t } = useTranslation();
   return (
     <div className="Approach">
       <div className="Title">
-        <h2>Our approach to reach our business goals</h2>
+        <h2>{t("K_55")}</h2>
       </div>
       <div className="Content">
         {goals.map((goal, index) => (
@@ -49,9 +49,9 @@ const Approach = () => {
               </div>
             </div>
             <div className="Info">
-              <h3>{goal.name}</h3>
+              <h3>{t(goal.name)}</h3>
               <h3>{goal.year}</h3>
-              <p>{goal.detail}</p>
+              <p>{t(goal.detail)}</p>
             </div>
           </div>
         ))}

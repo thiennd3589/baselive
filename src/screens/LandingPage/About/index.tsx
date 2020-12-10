@@ -1,11 +1,13 @@
 import React from "react";
 import baselive from "assets/landing-page/about/baselive.png";
 import "./styles.scss";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
   return (
     <div className="About">
-      <div className="Title">About us</div>
+      <div className="Title">{t("K_27")}</div>
       <div className="Content">
         <div className="Image">
           <div className="Background"></div>
@@ -13,18 +15,18 @@ const About = () => {
         </div>
         <div className="Info">
           <div className="Vision">
-            <h3>Vision</h3>
+            <h3>{t("K_28")}</h3>
             <ul>
-              <li>The all-in-one event platform optimized for connecting</li>
-              <li>Unicorn StartUp of VietNam</li>
+              <li>{t("K_29")}</li>
+              <li>{t("K_30")}</li>
             </ul>
           </div>
           <div className="Mission">
-            <h3>Mission</h3>
+            <h3>{t("K_31")}</h3>
             <ul>
-              <li>Share knowlegde </li>
-              <li>Convey experiences</li>
-              <li>More interactive</li>
+              <li>{t("K_32")}</li>
+              <li>{t("K_33")}</li>
+              <li>{t("K_34")}</li>
             </ul>
           </div>
         </div>

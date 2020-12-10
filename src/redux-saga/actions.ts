@@ -20,3 +20,4 @@ export const LOG_IN = "LOG_IN";
 
 //LOCAL ACTION
 export const SAVE_EVENT_BASIC_INFO = "SAVE_EVENT_BASIC_INFO";
+export const CHANGE_LANGUAGE = "CHANGE_LANGUAGE";

@@ -5,6 +5,8 @@ import logo from "assets/Logo.svg";
 import "./styles.scss";
 import { Global } from "global";
 import Button from "elements/Button";
+import { useTranslation } from "react-i18next";
+import LanguagePicker from "components/LanguagePicker";
 
 interface HeaderProps {
   disableLogo?: boolean;
@@ -36,6 +38,7 @@ const LandingHeader = (props: HeaderProps) => {
             </div>
           )}
           <div className="SocialLink">
+            <LanguagePicker />
             <Link to="/">
               <Icon name="facebook f" />
             </Link>
@@ -51,7 +54,7 @@ const LandingHeader = (props: HeaderProps) => {
         <div className="BottomSection">
           <div className="Menu">
             <Menu secondary>
-              <Menu.Item name="About the Service" as={Link} to="/createEvent" />
+              <Menu.Item name='About the Service' as={Link} to="/createEvent" />
               <Menu.Item name="Company" as={Link} to="/" />
               <Menu.Item name="Explore event" as={Link} to="/onboard" />
               <Menu.Item name="Blog" as={Link} to="/" />

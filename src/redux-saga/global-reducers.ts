@@ -1,7 +1,7 @@
 import { Obj } from "interfaces/common";
 import { Action } from "interfaces/common";
 import { createReducer } from "utils";
-import { SAVE_EVENT_BASIC_INFO } from "./actions";
+import { CHANGE_LANGUAGE, SAVE_EVENT_BASIC_INFO } from "./actions";
 
 export const QUERY_CATEGORY_SUCCESS = "QUERY_CATEGORY_SUCCESS";
 export const QUERY_CATEGORY_FAILURE = "QUERY_CATEGORY_FAILURE";
@@ -99,3 +99,12 @@ export const QUERY_TICKET_SUCCESS = "QUERY_TICKET_SUCCESS";
 export const QUERY_TICKET_FAILURE = "QUERY_TICKET_FAILURE";
 
 export const Ticket = createReducer(QUERY_TICKET_SUCCESS, QUERY_TICKET_FAILURE);
+
+export const Language = (state: string = "en", action: Action<Obj>) => {
+  switch (action.type) {
+    case CHANGE_LANGUAGE:
+      return action.payload;
+    default:
+      return state;
+  }
+};

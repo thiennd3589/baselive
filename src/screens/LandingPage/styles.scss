@@ -1,6 +1,18 @@
 .LandingPage {
   display: flex;
   justify-content: center;
+  font-family: "Bai Jamjuree", sans-serif !important;
+  h1,
+  h2,
+  h3,
+  button {
+    font-family: "Bai Jamjuree", sans-serif !important;
+  }
+  h1,
+  h2,
+  h3 {
+    padding: 8px 0;
+  }
   > .Container {
     display: flex;
     flex-direction: column;

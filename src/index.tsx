@@ -1,18 +1,40 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
-import reportWebVitals from "./reportWebVitals";
-import App from "./App";
-import ScrollToTop from "components/ScrollTop";
-import { Provider } from "react-redux";
-import store from "redux-saga/store";
+import i18n from "i18next";
 import { toast } from "react-toastify";
+import { Provider } from "react-redux";
+import ScrollToTop from "components/ScrollTop";
+import reportWebVitals from "./reportWebVitals";
+import { initReactI18next } from "react-i18next";
+import { BrowserRouter as Router } from "react-router-dom";
+import translateEN from "./i18n/en.json";
+import translateVI from "./i18n/vi.json";
+import App from "./App";
+import store from "redux-saga/store";
 import "./index.scss";
 import "semantic-ui-css/semantic.min.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    resources: {
+      en: {
+        translation: translateEN,
+      },
+      vi: {
+        translation: translateVI,
+      },
+    },
+    lng: "en",
+    fallbackLng: "en",
+
+    interpolation: {
+      escapeValue: false,
+    },
+  });
 
 ReactDOM.render(
   <Provider store={store}>

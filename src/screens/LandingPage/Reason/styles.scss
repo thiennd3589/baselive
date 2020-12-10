@@ -1,0 +1,113 @@
+.Reason {
+  position: relative;
+  bottom: 210px;
+  > .Title {
+    background-color: #f5f5f5;
+    padding: 2rem 8rem;
+
+    > h2 {
+      font-weight: bold;
+      font-size: 4rem;
+      line-height: 4rem;
+      background: -webkit-linear-gradient(90deg, #80688e 0%, #4f586a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .ReasonItem {
+    display: flex;
+    padding: 2rem 8rem;
+    &:nth-child(even) {
+      background-color: #f5f5f5;
+      flex-direction: row-reverse;
+    }
+    .Info {
+      display: flex;
+      flex: 2;
+      .Icon {
+        padding: 25px;
+        .IconContent {
+          border-radius: 50%;
+          height: 4.1rem;
+          width: 4.1rem;
+          i {
+            font-size: 1.7rem;
+            position: relative;
+            top: 33%;
+            left: 26%;
+            margin: 0;
+            padding: 0;
+          }
+        }
+        &.Icon1 {
+          .IconContent {
+            background-color: #dcf7e3;
+            color: #069697;
+          }
+        }
+
+        &.Icon2 {
+          .IconContent {
+            background-color: #fee4e2;
+            color: #ea3d2f;
+          }
+        }
+
+        &.Icon3 {
+          .IconContent {
+            background-color: #fcf3d7;
+            color: #f3aa18;
+          }
+        }
+      }
+
+      .Content {
+        h2 {
+          font-weight: bold;
+          font-size: 34px;
+          line-height: 38px;
+        }
+        p {
+          font-size: 20px;
+          line-height: 30px;
+          text-align: justify;
+        }
+      }
+    }
+    .Images {
+      flex: 1;
+      position: relative;
+      margin-left: 4rem;
+      img {
+        width: 100%;
+
+        &.ReasonDecor {
+          width: 40%;
+          position: absolute;
+
+          &.Decor0 {
+            left: -10%;
+            top: 10%;
+          }
+
+          &.Decor1 {
+            right: -10%;
+            bottom: -10%;
+          }
+
+          &.Decor2 {
+            bottom: -15%;
+            right: 20%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .ReasonItem {
+    padding: 2rem 15rem !important;
+  }
+}

@@ -6,7 +6,7 @@
   .Input {
     display: flex;
     flex-direction: column;
-    border: 1px solid #dbdbdb;
+    border: 1px solid $border-color;
     width: 44rem;
     height: $input-height;
     justify-content: center;
@@ -16,13 +16,13 @@
     label {
       font-weight: 300;
       font-size: 1rem;
-      line-height: 21px;
+      line-height: 1.5rem;
       letter-spacing: 0.14px;
     }
     input {
       border: none;
       font-size: 1.7rem;
-      line-height: 36px;
+      line-height: 2.7rem;
       width: 100%;
       &:focus {
         outline: none;

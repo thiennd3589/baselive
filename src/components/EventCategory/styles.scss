@@ -8,7 +8,7 @@
     span {
       font-weight: 600;
       font-size: 2rem;
-      line-height: 39px;
+      line-height: 2.78rem;
     }
   }
 
@@ -22,7 +22,7 @@
   display: flex;
   height: $input-height;
   align-items: center;
-  border: 1px solid #e5e5e5;
+  border: 1px solid $border-color;
   box-shadow: 0px 2px 8px #efefef;
   border-radius: 3px;
   cursor: pointer;
@@ -50,7 +50,7 @@
     margin: 0px 20px;
     font-weight: 600;
     font-size: 1.2rem;
-    line-height: 25px;
+    line-height: 1.78rem;
   }
 
   margin: 15px;

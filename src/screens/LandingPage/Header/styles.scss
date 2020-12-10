@@ -1,0 +1,76 @@
+@import "../../../variables.scss";
+.HeaderLanding {
+  padding: 15px 20px;
+  width: 100%;
+
+  .Container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    .TopSection {
+      padding: 15px 0px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid $border-color;
+      .LogoSection {
+        cursor: pointer;
+        a {
+          display: flex;
+          align-items: center;
+
+          span {
+            font-weight: bolder;
+            font-size: 2.43rem;
+            margin-left: 15px;
+            color: $theme-color;
+          }
+        }
+      }
+      .SocialLink {
+        a {
+          margin: 0 10px;
+          color: #78909c;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .BottomSection {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0px;
+
+      .Menu {
+        .ui.menu {
+          .item {
+            font-family: "Poppins", sans-serif !important;
+            text-decoration: none;
+            color: #474747;
+            font-weight: 500;
+            transition: color 0.15s ease-out;
+            font-size: 1.1rem;
+            &.active,
+            &:hover {
+              color: $theme-color;
+            }
+          }
+        }
+      }
+      .Button {
+        height: unset;
+        padding: 10px;
+        font-size: 1rem;
+        line-height: 0.42rem;
+        border: 1px solid #367bf5;
+        box-sizing: border-box;
+        box-shadow: 0px 2px 16px #ececec;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #367bf5;
+        text-transform: uppercase;
+        background: none;
+      }
+    }
+  }
+}

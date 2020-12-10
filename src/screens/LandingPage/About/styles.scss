@@ -1,0 +1,42 @@
+.About {
+  margin-top: 100px;
+  .Title {
+    font-weight: bold;
+    font-size: 3.1rem;
+    line-height: 4.1rem;
+    margin-left: 50px;
+  }
+  .Content {
+    display: flex;
+    .Image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      .Background {
+        position: absolute;
+        height: 100%;
+        width: 110%;
+        z-index: -1;
+        background: #d5fafc;
+      }
+    }
+
+    .Info {
+      margin-top: 100px;
+      h3 {
+        font-weight: 800;
+        font-size: 2rem;
+        line-height: 2.8rem;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        margin-left: 70px;
+      }
+
+      .Mission {
+        margin-top: 30px;
+      }
+    }
+  }
+}

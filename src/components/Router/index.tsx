@@ -11,6 +11,7 @@ import Publish from "screens/Publish";
 import EventPage from "screens/EventPage";
 import { useDispatch } from "react-redux";
 import { queryCategory } from "redux-saga/global-actions";
+import LandingPage from "screens/LandingPage";
 
 const Router = () => {
   const [, redraw] = useState({});
@@ -26,7 +27,8 @@ const Router = () => {
 
   return (
     <Switch>
-      <Route path="/" exact component={Onboard} />
+      <Route path="/" exact component={LandingPage} />
+      <Route path="/onboard" component={Onboard} />
       <Route path="/login" component={Login} />
       <Route
         path="/createEvent"

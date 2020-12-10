@@ -1,0 +1,68 @@
+.Feedback {
+  background: #d5fafc;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+  > .icon {
+    position: absolute;
+    top: 4%;
+    left: 15%;
+    font-size: 10rem;
+    color: rgba($color: #2ec5ce, $alpha: 0.3);
+  }
+  .Title {
+    max-width: 490px;
+    margin-left: 20%;
+    margin-top: 5%;
+    z-index: 1;
+    h2 {
+      font-weight: 800;
+      font-size: 3.5rem;
+      line-height: 4.5rem;
+    }
+    span {
+      font-size: 1.2rem;
+      line-height: 2.2rem;
+    }
+  }
+
+  .Content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px 0;
+    .Feed {
+      display: flex;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
+      border-radius: 8px;
+      width: 20%;
+      i {
+        color: #2ec5ce;
+        margin: 0 7px;
+      }
+      .Info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .Text {
+          font-size: 1.1rem;
+          line-height: 2.1rem;
+        }
+
+        .Name {
+          font-weight: bold;
+          font-size: 1.1rem;
+          line-height: 2.1rem;
+        }
+
+        .Position {
+          color: #969bab;
+        }
+      }
+    }
+  }
+}

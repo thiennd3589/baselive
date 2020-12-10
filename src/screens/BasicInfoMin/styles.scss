@@ -46,14 +46,14 @@
               font-style: normal;
               font-weight: 600;
               font-size: 1.7rem;
-              line-height: 36px;
+              line-height: 2.7rem;
               margin: 0;
             }
 
             span {
               font-weight: 300;
               font-size: 1rem;
-              line-height: 21px;
+              line-height: 1.5rem;
               letter-spacing: 0.14px;
             }
           }
@@ -83,8 +83,8 @@
 
             .Tag {
               font-size: 1.2rem;
-              line-height: 22px;
-              background: #dbdbdb;
+              line-height: 1.5rem;
+              background: $border-color;
               backdrop-filter: blur(54.37px);
               border-radius: 13px;
               padding: 10px;
@@ -108,10 +108,10 @@
               width: 16rem;
               cursor: pointer;
               background: #ffffff;
-              border: 1px solid #dbdbdb;
+              border: 1px solid $border-color;
               border-radius: 5px;
               font-size: 1.7rem;
-              line-height: 36px;
+              line-height: 2.7rem;
               color: #484848;
               margin: 20px 0;
               &.Active {
@@ -132,7 +132,7 @@
             > span {
               font-weight: 300;
               font-size: 1rem;
-              line-height: 21px;
+              line-height: 1.5rem;
               letter-spacing: 0.14px;
               color: #464646;
             }

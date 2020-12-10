@@ -35,18 +35,20 @@
       > .Title {
         font-weight: 600;
         font-size: 2rem;
-        line-height: 39px;
+        line-height: 2.78rem;
       }
       .EventsContainer {
         .EventItem {
           padding: 5px;
-          width: 240px;
+          width: 17.14rem;
           cursor: pointer;
           .Image {
+            height: 11.42rem;
             width: 100%;
             img {
               width: 100%;
               border-radius: 5px;
+              height: 100%;
             }
           }
           .Info {
@@ -60,8 +62,11 @@
               font-weight: 600;
               color: #464646;
               margin: 5px 0;
-              line-height: 22px;
+              line-height: 1.5rem;
               letter-spacing: 0.17px;
+            }
+            .icon {
+              font-size: 0.8rem;
             }
           }
         }

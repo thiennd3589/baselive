@@ -1,0 +1,76 @@
+.Discover {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  > .Title {
+    background: #e5efff;
+    box-shadow: 0px 4px 8px rgba(54, 123, 245, 0.16),
+      0px 2px 4px rgba(54, 123, 245, 0.24);
+    border-radius: 8px;
+    padding: 10px 20px;
+    h2 {
+      font-weight: 500;
+      font-size: 4rem;
+      line-height: 100%;
+      background: -webkit-linear-gradient(90deg, #80688e 0%, #4f586a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+  }
+  .EventNav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 50px;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .EventsLanding {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%;
+
+    .Item {
+      display: flex;
+      justify-content: center;
+      .EventItem {
+        padding: 5px;
+        width: 17.14rem;
+
+        cursor: pointer;
+        .Image {
+          width: 100%;
+          height: 11.42rem;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+          }
+        }
+        .Info {
+          .Category {
+            font-weight: 600;
+            color: #002b37;
+            font-size: 0.9rem;
+          }
+          .Title {
+            font-size: 1.28rem;
+            font-weight: 600;
+            color: #464646;
+            margin: 5px 0;
+            line-height: 1.5rem;
+            letter-spacing: 0.17px;
+          }
+          .icon {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}

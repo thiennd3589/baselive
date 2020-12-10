@@ -22,20 +22,25 @@ interface EventItemProps {
   image?: string;
   title: string;
   category: Obj;
+  onClick?: () => void;
 }
 
-const EventItem = (props: EventItemProps) => {
+export const EventItem = (props: EventItemProps) => {
   const history = useHistory();
+  const onClick = () => {
+    props.onClick ? props.onClick() : redirect();
+  };
   const redirect = () => {
     history.push(`/event/${props.id}`);
   };
 
   return (
-    <div className="EventItem" onClick={redirect}>
+    <div className="EventItem">
       <div className="Image">
         <img
           src={props.image ? props.image : "https://picsum.photos/1920/1080"}
           alt={props.title}
+          onClick={onClick}
         />
       </div>
       <div className="Info">
@@ -128,10 +133,6 @@ const Onboard = () => {
       redraw({});
     }
   }, [eventInHanoi]);
-
-  useEffect(() => {
-    console.log(category);
-  }, [category]);
 
   const renderEvents = (name: string, events: Obj[]) => {
     return (

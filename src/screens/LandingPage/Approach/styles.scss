@@ -1,0 +1,43 @@
+.Approach {
+  max-width: 1160px;
+  .Title {
+    h2 {
+      font-weight: 500;
+      font-size: 3.1rem;
+      line-height: 4.1rem;
+    }
+  }
+  .Content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    .Goal {
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      .Icon {
+        .Image {
+          img {
+            background: #f4f5f7;
+            border-radius: 50%;
+            padding: 20px;
+          }
+        }
+      }
+
+      .Info {
+        h3 {
+          font-weight: bold;
+          font-size: 1.1rem;
+          margin: 0;
+          line-height: 2rem;
+        }
+        p {
+          font-size: 1.05rem;
+          margin: 0;
+          line-height: 2rem;
+        }
+      }
+    }
+  }
+}

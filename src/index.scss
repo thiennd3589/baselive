@@ -21,8 +21,8 @@ code {
 }
 
 ::-webkit-scrollbar {
-  width: 2px;
-  height: 2px;
+  width: 5px;
+  height: 5px;
 }
 
 button,
@@ -54,4 +54,10 @@ input {
 }
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #fc3c4f;
+}
+
+@media only screen and (min-width: 1700px) {
+  html {
+    font-size: 20px;
+  }
 }

@@ -1,0 +1,102 @@
+@import "../../../variables.scss";
+.IntroLanding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  .Title {
+    width: 70%;
+    h1 {
+      font-weight: bold;
+      font-size: 3.42rem;
+      line-height: 3.7rem;
+      margin: 20px 0;
+      background: -webkit-linear-gradient(90deg, #80688e 0%, #4f586a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p {
+      font-size: 1.42rem;
+      line-height: 2.15rem;
+      color: rgba(0, 0, 0, 0.87);
+      margin: 20px 0;
+    }
+  }
+
+  .Buttons {
+    .Button {
+      height: unset;
+      padding: 10px 30px;
+      font-size: 1rem;
+      line-height: 0.42rem;
+      border: 1px solid #367bf5;
+      box-sizing: border-box;
+      box-shadow: 0px 2px 16px #ececec;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #367bf5;
+      text-transform: uppercase;
+      background: none;
+      margin: 0 7px;
+
+      &.DownloadButton {
+        background-color: #367bf5;
+        color: #fff;
+      }
+    }
+  }
+
+  .Images {
+    width: 100%;
+    position: relative;
+    bottom: 210px;
+    z-index: -1;
+    .Background {
+      position: relative;
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .Sample {
+      position: absolute;
+      z-index: 1;
+      top: 36%;
+      width: 42%;
+      left: 29%;
+      img {
+        width: 100%;
+      }
+    }
+
+    .Decor {
+      position: absolute;
+      z-index: 3;
+      &.Image1 {
+        top: 30%;
+        left: 15%;
+      }
+
+      &.Image3 {
+        top: 70%;
+        right: 25%;
+      }
+
+      &.Image2 {
+        top: 75%;
+        left: 30%;
+      }
+
+      &.Image4 {
+        top: 55%;
+        left: 15%;
+      }
+
+      &.Image5 {
+        top: 40%;
+        right: 20%;
+      }
+    }
+  }
+}

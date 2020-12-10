@@ -74,6 +74,8 @@ const Features = () => {
     );
   };
 
+  console.log(t("K_35"))
+
   return (
     <div className="Features">
       <div className="Title">

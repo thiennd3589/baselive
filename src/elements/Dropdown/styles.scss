@@ -11,7 +11,7 @@
     &.active,
     &.active:hover,
     &:focus {
-      border-color: $theme-color !important;
+      border-color: none !important;
     }
 
     > .text {

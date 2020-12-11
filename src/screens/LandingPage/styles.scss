@@ -13,13 +13,16 @@
   h3 {
     padding: 8px 0;
   }
-  > .Container {
+  > .LandingRootContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     .Intro {
       width: 100%;
       position: relative;
+    }
+    .Footer{
+      width: 100%;
     }
   }
 }

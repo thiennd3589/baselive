@@ -53,23 +53,22 @@ const Reason = () => {
   return (
     <div className="Reason">
       <div className="Title">
-        <h2>{t("K_5")}</h2>
+        <h2 data-aos="fade-down">{t("K_5")}</h2>
       </div>
       {reasonItem.map((item, index) => (
         <div className="ReasonItem" key={index}>
-          <div className="Info">
+          <div className="Info" data-aos="fade-left">
             <div className={`Icon ${item.icon.className}`}>
               <div className="IconContent">
                 <Icon name={item.icon.name as SemanticICONS} />
               </div>
             </div>
-
             <div className="Content">
               <h2>{t(item.title)}</h2>
               <p>{t(item.detail)}</p>
             </div>
           </div>
-          <div className="Images">
+          <div className="Images" data-aos="fade-right">
             <img src={item.image} alt={item.title} />
             <img
               src={item.decor}

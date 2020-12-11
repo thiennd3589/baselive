@@ -39,7 +39,7 @@ const Header = (props: HeaderProps) => {
                         {!Global.user.token ? <><Menu.Item
                             name="Sign up"
                             as={Link}
-                            to="/login"
+                            to="/signup"
                             active={location.pathname === "/signup"}
                         />
                             <Menu.Item

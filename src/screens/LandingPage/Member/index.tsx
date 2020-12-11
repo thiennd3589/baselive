@@ -1,16 +1,12 @@
 import React from "react";
 import member from "assets/landing-page/member/member.jpg";
+import "./styles.scss";
 
 const Member = () => {
   return (
-    <div className="Member">
-      <img
-        src={member}
-        alt="member"
-        style={{
-          width: `${window.innerWidth <= 1442 ? window.innerWidth : 1442}px`,
-        }}
-      />
+    <div className="Member" data-aos="fade-down" data-aos-offset={700}>
+      <div className="Title">About us</div>
+      <img src={member} alt="member" />
     </div>
   );
 };

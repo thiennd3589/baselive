@@ -1,17 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import { Global } from "global";
 import BasicInfo from "screens/BasicInfor";
-import Login from "screens/Login";
 import Onboard from "screens/Onboard";
 import Detail from "screens/Detail";
 import BasicInfoMin from "screens/BasicInfoMin";
 import Ticket from "screens/Ticket";
 import Publish from "screens/Publish";
 import EventPage from "screens/EventPage";
+import SignUp from "screens/SignUp";
 import { useDispatch } from "react-redux";
 import { queryCategory } from "redux-saga/global-actions";
-import LandingPage from "screens/LandingPage";
+import Loader from "components/Loader";
+
+const Login = React.lazy(
+  () => import(/* webpackChunkName: "Login" */ "screens/Login")
+);
+const LandingPage = React.lazy(
+  () => import(/* webpackChunkName: "Login" */ "screens/LandingPage")
+);
 
 const Router = () => {
   const [, redraw] = useState({});
@@ -27,9 +34,18 @@ const Router = () => {
 
   return (
     <Switch>
-      <Route path="/" exact component={LandingPage} />
+      <Route path="/" exact>
+        <Suspense fallback={<Loader />}>
+          <LandingPage />
+        </Suspense>
+      </Route>
       <Route path="/onboard" component={Onboard} />
-      <Route path="/login" component={Login} />
+      <Route path="/login">
+        <Suspense fallback={<Loader />}>
+          <Login />
+        </Suspense>
+      </Route>
+      <Route path="/signup" component={SignUp} />
       <Route
         path="/createEvent"
         render={() => {

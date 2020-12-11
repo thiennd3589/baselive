@@ -1,6 +1,6 @@
 @import "../../variables.scss";
 
-.Login {
+.SignUp {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@
       justify-content: space-between;
 
       button {
-        width: 16.05rem;
+        width: 100%;
         color: #fff;
         background: $theme-color;
         transition: transform 0.1s ease-out;

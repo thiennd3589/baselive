@@ -1,6 +1,18 @@
 .Features {
   width: 1160px;
   margin: 100px 0;
+  position: relative;
+  .Decor {
+    position: absolute;
+    display: block;
+    width: 30vw;
+    height: 30vw;
+    background: #f1e4ff;
+    z-index: -1;
+    border-radius: 50%;
+    right: 30px;
+    top: 30px;
+  }
   .Title {
     text-align: left;
     h2 {

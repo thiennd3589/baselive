@@ -74,15 +74,22 @@ const Features = () => {
     );
   };
 
-  console.log(t("K_35"))
-
   return (
     <div className="Features">
+      <div className="Decor"></div>
       <div className="Title">
-        <h2>{t("K_56")}</h2>
-        <p>{t("K_57")}</p>
+        <h2 data-aos="fade-down" data-aos-offset={700}>
+          {t("K_56")}
+        </h2>
+        <p data-aos="fade-up" data-aos-offset={700}>
+          {t("K_57")}
+        </p>
       </div>
-      <div className="Content">
+      <div
+        className="Content"
+        data-aos="fade-left"
+        data-aos-delay={500}
+      >
         <div className="FeatureContainer">
           {features.map((feature, index) => (
             <div

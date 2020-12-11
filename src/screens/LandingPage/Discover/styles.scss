@@ -25,9 +25,12 @@
     width: 100%;
     margin-top: 50px;
     cursor: pointer;
+    align-items: center;
 
-    &:hover {
-      text-decoration: underline;
+    .NavButton {
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   .EventsLanding {

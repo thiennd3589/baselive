@@ -15,7 +15,8 @@ import {
   TrendingEvent,
   UpdateEventResult,
 } from "./global-reducers";
-import { LogIn, SignUp } from "screens/Login/reducers";
+import { LogIn } from "screens/Login/reducers";
+import { SignUp } from "screens/SignUp/reducers";
 
 export const state = combineReducers({
   //

@@ -41,12 +41,16 @@ const Instruction = () => {
   return (
     <div className="Instruction">
       <div className="Title">
-        <h2>{t("K_24")}</h2>
-        <p>{t("K_25")}</p>
+        <h2 data-aos="zoom-in">{t("K_24")}</h2>
+        <p data-aos="zoom-out">{t("K_25")}</p>
       </div>
       <div className="Usages">
         {usages.map((item, index) => (
-          <div className="UsageItem" key={index}>
+          <div
+            className="UsageItem"
+            key={index}
+            data-aos="fade-down"
+          >
             <div className="Icon">
               <div className="IconContent">
                 <Icon name={item.icon as SemanticICONS} />

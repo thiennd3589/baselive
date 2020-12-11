@@ -1,3 +1,4 @@
+import Footer from "components/Footer";
 import React from "react";
 import About from "./About";
 import Approach from "./Approach";
@@ -14,7 +15,7 @@ import "./styles.scss";
 const LandingPage = () => {
   return (
     <div className="LandingPage">
-      <div className="Container">
+      <div className="LandingRootContainer">
         <Header />
         <IntroLanding />
         <Reason />
@@ -25,6 +26,7 @@ const LandingPage = () => {
         <Approach />
         <Feedback />
         <Member />
+        <Footer />
       </div>
     </div>
   );

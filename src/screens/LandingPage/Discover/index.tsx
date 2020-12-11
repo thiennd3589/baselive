@@ -52,17 +52,17 @@ const Discover = () => {
   }, [trendingEvent]);
   return (
     <div className="Discover">
-      <div className="Title">
+      <div className="Title" data-aos="zoom-in" >
         <h2>{t("K_26")}</h2>
       </div>
       <div className="EventNav">
-        <h3>Most common</h3>
-        <div className="NavButton" onClick={onClick}>
+        <h3 data-aos="fade-right">Most common</h3>
+        <div className="NavButton" onClick={onClick} data-aos="fade-left">
           <span>See all</span>
           <Icon name="angle right" />
         </div>
       </div>
-      <div className="EventsLanding">
+      <div className="EventsLanding" data-aos="fade-up">
         {ref.current.trendingEvent.slice(0, 8).map((event, index) => (
           <div className="Item" key={index}>
             <EventItem

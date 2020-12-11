@@ -37,10 +37,10 @@ const Approach = () => {
   const { t } = useTranslation();
   return (
     <div className="Approach">
-      <div className="Title">
+      <div className="Title" data-aos="zoom-out" data-aos-offset={700}>
         <h2>{t("K_55")}</h2>
       </div>
-      <div className="Content">
+      <div className="Content" data-aos="zoom-in" data-aos-offset={700}>
         {goals.map((goal, index) => (
           <div className="Goal" key={index}>
             <div className="Icon">

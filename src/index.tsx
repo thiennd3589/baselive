@@ -7,16 +7,21 @@ import ScrollToTop from "components/ScrollTop";
 import reportWebVitals from "./reportWebVitals";
 import { initReactI18next } from "react-i18next";
 import { BrowserRouter as Router } from "react-router-dom";
+import AOS from "aos";
 import translateEN from "./i18n/en.json";
 import translateVI from "./i18n/vi.json";
 import App from "./App";
 import store from "redux-saga/store";
 import "./index.scss";
+import "aos/dist/aos.css";
 import "semantic-ui-css/semantic.min.css";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "react-toastify/dist/ReactToastify.css";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
+//notification
 toast.configure();
+
+//translation
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
@@ -35,6 +40,16 @@ i18n
       escapeValue: false,
     },
   });
+
+//animation
+AOS.init({
+  duration: 700,
+});
+
+window.addEventListener("load", () => {
+  window.scrollTo(0, 0);
+  AOS.refresh();
+});
 
 ReactDOM.render(
   <Provider store={store}>

@@ -29,7 +29,14 @@ export function* createEvent() {
 }
 
 export function* updateEvent() {
-  yield watchQuery(UPDATE_EVENT, "e", REQUEST_METHOD.PUT, undefined, true);
+  yield watchQuery(
+    UPDATE_EVENT,
+    "e",
+    REQUEST_METHOD.PUT,
+    undefined,
+    true,
+    true
+  );
 }
 
 export function* createTicket() {

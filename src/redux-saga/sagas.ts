@@ -13,7 +13,7 @@ import {
   querySingleEvent,
 } from "./sagas/Events";
 import { logIn, signUp } from "./sagas/Login";
-import { queryTicket } from "./sagas/Ticket";
+import { createBill, queryBill, queryTicket } from "./sagas/Ticket";
 
 function* sagas() {
   yield all([
@@ -28,6 +28,8 @@ function* sagas() {
     queryEventInHanoi(),
     querySingleEvent(),
     queryTicket(),
+    createBill(),
+    queryBill(),
     //
     uploadImage(),
     //

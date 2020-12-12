@@ -2,8 +2,10 @@ import { combineReducers } from "redux";
 import { Events } from "components/EventPicker/reducers";
 import {
   BasicInfoLocal,
+  Bill,
   Category,
   CategoryType,
+  CreateBillResult,
   CreateEventResult,
   CreateTicketResult,
   Event,
@@ -32,8 +34,11 @@ export const state = combineReducers({
   event: Event,
 
   //ticket
+  createBillResult: CreateBillResult,
   createTicketResult: CreateTicketResult,
   ticket: Ticket,
+  bill: Bill,
+
   //category
   category: Category,
   categoryType: CategoryType,

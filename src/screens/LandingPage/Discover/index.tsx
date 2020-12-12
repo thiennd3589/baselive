@@ -2,6 +2,7 @@ import { Obj } from "interfaces/common";
 import React, { useEffect, useRef, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import AOS from "aos";
 import { Icon } from "semantic-ui-react";
 import { State } from "redux-saga/reducers";
 import { queryTrendingEvent } from "redux-saga/global-actions";
@@ -50,9 +51,12 @@ const Discover = () => {
       redraw({});
     }
   }, [trendingEvent]);
+  
+  AOS.refreshHard();
+
   return (
     <div className="Discover">
-      <div className="Title" data-aos="zoom-in" >
+      <div className="Title" data-aos="zoom-in">
         <h2>{t("K_26")}</h2>
       </div>
       <div className="EventNav">

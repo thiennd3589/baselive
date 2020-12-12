@@ -4,7 +4,7 @@ import "./styles.scss";
 
 const Member = () => {
   return (
-    <div className="Member" data-aos="fade-down" data-aos-offset={700}>
+    <div className="Member" data-aos="fade-down" >
       <div className="Title">About us</div>
       <img src={member} alt="member" />
     </div>

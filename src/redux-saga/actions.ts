@@ -13,6 +13,8 @@ export const QUERY_SINGLE_EVENT = "QUERY_SINGLE_EVENT";
 
 //Ticket
 export const QUERY_TICKET = "QUERY_TICKET";
+export const CREATE_BILL = "CREATE_BILL";
+export const QUERY_BILL = "QUERY_BILL";
 
 //Login
 export const SIGN_UP = "SIGN_UP";

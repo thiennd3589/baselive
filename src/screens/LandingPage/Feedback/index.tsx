@@ -32,14 +32,14 @@ const Feedback = () => {
     <div className="Feedback">
       <Icon name="quote left" />
       <div className="Title">
-        <h2 data-aos="fade-up" data-aos-offset={700}>
+        <h2 data-aos="fade-up" >
           Feedback from Real Customers
         </h2>
-        <span data-aos="fade-down" data-aos-offset={700}>
+        <span data-aos="fade-down" >
           Get inspired by these stories.
         </span>
       </div>
-      <div className="Content" data-aos="fade-right" data-aos-offset={700}>
+      <div className="Content" data-aos="fade-right" >
         {feedbacks.map((feedback, index) => (
           <div className="Feed" key={index}>
             <Icon name="quote left" />

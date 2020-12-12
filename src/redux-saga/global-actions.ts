@@ -1,7 +1,9 @@
 import { EventInfo, Obj } from "interfaces/common";
 import {
+  CREATE_BILL,
   CREATE_EVENT,
   CREATE_TICKET,
+  QUERY_BILL,
   QUERY_CATEGORY,
   QUERY_CATEGORY_TYPE,
   QUERY_EVENT_IN_HANOI,
@@ -36,8 +38,28 @@ import {
   QUERY_SINGLE_EVENT_FAILURE,
   QUERY_TICKET_SUCCESS,
   QUERY_TICKET_FAILURE,
+  CREATE_BILL_SUCCESS,
+  CREATE_BILL_FAILURE,
+  QUERY_BILL_SUCCESS,
+  QUERY_BILL_FAILURE,
 } from "./global-reducers";
 
+//Local
+export const saveEventBasicInfo = (payload: Obj) => ({
+  type: SAVE_EVENT_BASIC_INFO,
+  payload: payload,
+});
+
+export const uploadImage = (payload: FormData) => ({
+  type: UPLOAD_IMAGE,
+  payload: payload,
+  response: {
+    success: UPLOAD_IMAGE_SUCCESS,
+    failure: UPLOAD_IMAGE_FAILURE,
+  },
+});
+
+//Event
 export const queryCategory = (payload: Obj) => ({
   type: QUERY_CATEGORY,
   payload,
@@ -56,11 +78,6 @@ export const queryCategoryType = (payload?: Obj) => ({
   },
 });
 
-export const saveEventBasicInfo = (payload: Obj) => ({
-  type: SAVE_EVENT_BASIC_INFO,
-  payload: payload,
-});
-
 export const createEvent = (payload: Obj) => ({
   type: CREATE_EVENT,
   payload: payload,
@@ -76,24 +93,6 @@ export const updateEvent = (payload: Obj) => ({
   response: {
     success: UPDATE_EVENT_SUCCESS,
     failure: UPDATE_EVENT_FAILURE,
-  },
-});
-
-export const uploadImage = (payload: FormData) => ({
-  type: UPLOAD_IMAGE,
-  payload: payload,
-  response: {
-    success: UPLOAD_IMAGE_SUCCESS,
-    failure: UPLOAD_IMAGE_FAILURE,
-  },
-});
-
-export const createTicket = (payload: Obj) => ({
-  type: CREATE_TICKET,
-  payload: payload,
-  response: {
-    success: CREATE_TICKET_SUCCESS,
-    failure: CREATE_TICKET_FAILURE,
   },
 });
 
@@ -139,11 +138,42 @@ export const querySingleEvent = (payload: Obj) => ({
   },
 });
 
+//Ticket and Bill
+
+export const createTicket = (payload: Obj) => ({
+  type: CREATE_TICKET,
+  payload: payload,
+  response: {
+    success: CREATE_TICKET_SUCCESS,
+    failure: CREATE_TICKET_FAILURE,
+  },
+});
+
 export const queryTicket = (payload: Obj) => ({
   type: QUERY_TICKET,
   payload,
   response: {
     success: QUERY_TICKET_SUCCESS,
     failure: QUERY_TICKET_FAILURE,
+  },
+});
+
+export const createBill = (payload: Obj) => {
+  return {
+    type: CREATE_BILL,
+    payload,
+    response: {
+      success: CREATE_BILL_SUCCESS,
+      failure: CREATE_BILL_FAILURE,
+    },
+  };
+};
+
+export const queryBill = (payload: Obj) => ({
+  type: QUERY_BILL,
+  payload,
+  response: {
+    success: QUERY_BILL_SUCCESS,
+    failure: QUERY_BILL_FAILURE,
   },
 });

@@ -7,15 +7,15 @@ const About = () => {
   const { t } = useTranslation();
   return (
     <div className="About">
-      <div className="Title" data-aos="zoom-in" data-aos-offset={700}>
+      <div className="Title" data-aos="zoom-in" >
         {t("K_27")}
       </div>
       <div className="Content">
-        <div className="Image" data-aos="fade-right" data-aos-offset={700}>
+        <div className="Image" data-aos="fade-right" >
           <div className="Background"></div>
           <img src={baselive} alt="baselive" />
         </div>
-        <div className="Info" data-aos="fade-left" data-aos-offset={700}>
+        <div className="Info" data-aos="fade-left" >
           <div className="Vision">
             <h3>{t("K_28")}</h3>
             <ul>

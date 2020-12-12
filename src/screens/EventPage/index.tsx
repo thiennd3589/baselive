@@ -1,32 +1,47 @@
+import React, { useEffect, useRef, useState } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
+import { Global } from "global";
+import Editor from "components/Editor";
 import Footer from "components/Footer";
 import Header from "components/Header";
-import { Obj } from "interfaces/common";
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { querySingleEvent, queryTicket } from "redux-saga/global-actions";
-import { State } from "redux-saga/reducers";
 import { Icon, Modal } from "semantic-ui-react";
-import Editor from "components/Editor";
+import {
+  createBill,
+  querySingleEvent,
+  queryTicket,
+} from "redux-saga/global-actions";
+import { State } from "redux-saga/reducers";
+import { Obj } from "interfaces/common";
 import "./styles.scss";
+import Loader from "components/Loader";
+import { queryBill } from "redux-saga/global-actions";
 
 const EventPage = () => {
   const param = useParams();
+  const history = useHistory();
   const dispatch = useDispatch();
-  const eventInfo = useSelector((state: State) => state.event);
-  const ticket = useSelector((state: State) => state.ticket);
+  const { eventInfo, ticket, bill } = useSelector(
+    (state: State) => ({
+      eventInfo: state.event,
+      ticket: state.ticket,
+      bill: state.bill,
+    }),
+    shallowEqual
+  );
   const [openCheckout, setOpencheckout] = useState(false);
   const ref = useRef<Obj>();
   const ticketRef = useRef<Obj[]>([]);
   const [, redraw] = useState({});
   const total = useRef(0);
+  const [enableWatch, setEnableWatch] = useState(false);
   useEffect(() => {
     dispatch(querySingleEvent({ eventId: (param as Obj).id }));
     dispatch(queryTicket({ eventId: (param as Obj).id }));
+    dispatch(queryBill({ eventId: (param as Obj).id }));
   }, []);
   useEffect(() => {
     if (eventInfo && eventInfo.success) {
-      console.log(eventInfo);
       ref.current = (eventInfo.response as Obj).data as Obj;
       redraw({});
     }
@@ -43,6 +58,13 @@ const EventPage = () => {
       redraw({});
     }
   }, [ticket]);
+
+  useEffect(() => {
+    if (bill && bill.success) {
+      ((bill.response as Obj).data as Obj).cartDetailList &&
+        setEnableWatch(true);
+    }
+  }, [bill]);
 
   const onIncreaseTicket = (type: string, id: string | number) => {
     if (type === "add") {
@@ -76,10 +98,29 @@ const EventPage = () => {
     }
     redraw({});
   };
+
+  const onCheckOut = () => {
+    if (Global.isAuthenticated) {
+      const params = {
+        eventId: parseInt((param as Obj).id as string),
+        cartDetailList: ticketRef.current.map((ticket) => ({
+          ticketId: ticket.id,
+          amount: ticket.buyQuantity,
+          price: parseInt(ticket.price as string),
+        })),
+      };
+      dispatch(createBill(params));
+      total.current = 0;
+      setOpencheckout(false);
+    } else {
+      history.push("/login");
+    }
+  };
+
   return (
     <div className="EventPage">
       <Header />
-      {ref.current && (
+      {ref.current ? (
         <div className="Container">
           <div className="Background">
             <img
@@ -99,7 +140,7 @@ const EventPage = () => {
                     ref.current.eventImage
                       ? (ref.current.eventImage as string)
                       : "https://picsum.photos/1920/1080"
-                    }
+                  }
                   alt={ref.current.title as string}
                 />
               </div>
@@ -113,101 +154,102 @@ const EventPage = () => {
                 <Icon name="share square" />
                 <Icon name="heart outline" />
               </div>
-              <Modal
-                onClose={() => setOpencheckout(false)}
-                onOpen={() => setOpencheckout(true)}
-                open={openCheckout}
-                trigger={<div className="TicketButton">Ticket</div>}
-              >
-                <div className="Left">
-                  <Modal.Header>
-                    <h3>{ref.current.title}</h3>
-                    <span>
-                      {ref.current.startDate}, {ref.current.startTime}
-                    </span>
-                  </Modal.Header>
-                  <div className="Tickets">
-                    {ticketRef.current.map((ticket, index) => (
-                      <div className="Ticket" key={index}>
-                        <div className="Info">
-                          <div className="Title">{ticket.name}</div>
-                          <div className="Price">
-                            {ticket.price}
-                            <sup>đ</sup>
-                          </div>
-                        </div>
-                        <div className="Quantity">
-                          {
-                            <div
-                              onClick={() =>
-                                onIncreaseTicket(
-                                  "subtract",
-                                  ticket.id as number
-                                )
-                              }
-                            >
-                              <Icon name="caret left" />
-                            </div>
-                          }
-                          <span>{ticket.buyQuantity}</span>
-                          <div
-                            onClick={() =>
-                              onIncreaseTicket("add", ticket.id as number)
-                            }
-                          >
-                            <Icon name="caret right" />
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div
-                    className="Checkout"
-                    onClick={() => {
-                      total.current = 0;
-                      setOpencheckout(false);
-                    }}
-                  >
-                    Check out
-                  </div>
-                </div>
-                <div className="Right">
-                  <div className="Image">
-                    <img
-                      src={ref.current.eventImage as string}
-                      alt={ref.current.title as string}
-                    />
-                  </div>
-                  <div className="BuyTickets">
-                    {ticketRef.current.map(
-                      (ticket, index) =>
-                        (ticket.buyQuantity as number) > 0 && (
-                          <div className="BuyQuantity" key={index}>
-                            <div className="Info">
-                              <div className="Quantity">
-                                {ticket.buyQuantity}x
-                              </div>
-                              <div className="Title">{ticket.name}</div>
-                            </div>
+              {enableWatch ? (
+                <div className="TicketButton">Watch</div>
+              ) : (
+                <Modal
+                  onClose={() => {
+                    setOpencheckout(false);
+                    total.current = 0;
+                  }}
+                  onOpen={() => setOpencheckout(true)}
+                  open={openCheckout}
+                  trigger={<div className="TicketButton">Ticket</div>}
+                >
+                  <div className="Left">
+                    <Modal.Header>
+                      <h3>{ref.current.title}</h3>
+                      <span>
+                        {ref.current.startDate}, {ref.current.startTime}
+                      </span>
+                    </Modal.Header>
+                    <div className="Tickets">
+                      {ticketRef.current.map((ticket, index) => (
+                        <div className="Ticket" key={index}>
+                          <div className="Info">
+                            <div className="Title">{ticket.name}</div>
                             <div className="Price">
                               {ticket.price}
                               <sup>đ</sup>
                             </div>
                           </div>
-                        )
-                    )}
-                    {total.current > 0 && (
-                      <div className="Total">
-                        <span>Total</span>
-                        <span>
-                          {total.current}
-                          <sup>đ</sup>
-                        </span>
-                      </div>
-                    )}
+                          <div className="Quantity">
+                            {
+                              <div
+                                onClick={() =>
+                                  onIncreaseTicket(
+                                    "subtract",
+                                    ticket.id as number
+                                  )
+                                }
+                              >
+                                <Icon name="caret left" />
+                              </div>
+                            }
+                            <span>{ticket.buyQuantity}</span>
+                            <div
+                              onClick={() =>
+                                onIncreaseTicket("add", ticket.id as number)
+                              }
+                            >
+                              <Icon name="caret right" />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="Checkout" onClick={onCheckOut}>
+                      Check out
+                    </div>
                   </div>
-                </div>
-              </Modal>
+                  <div className="Right">
+                    <div className="Image">
+                      <img
+                        src={ref.current.eventImage as string}
+                        alt={ref.current.title as string}
+                      />
+                    </div>
+                    <div className="BuyTickets">
+                      {ticketRef.current.map(
+                        (ticket, index) =>
+                          (ticket.buyQuantity as number) > 0 && (
+                            <div className="BuyQuantity" key={index}>
+                              <div className="Info">
+                                <div className="Quantity">
+                                  {ticket.buyQuantity}x
+                                </div>
+                                <div className="Title">{ticket.name}</div>
+                              </div>
+                              <div className="Price">
+                                {ticket.price}
+                                <sup>đ</sup>
+                              </div>
+                            </div>
+                          )
+                      )}
+                      {total.current > 0 && (
+                        <div className="Total">
+                          <span>Total</span>
+                          <span>
+                            {total.current}
+                            <sup>đ</sup>
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </Modal>
+              )}
             </div>
             <div className="MainContent">
               <div className="Editor">
@@ -245,6 +287,8 @@ const EventPage = () => {
             </div>
           </div>
         </div>
+      ) : (
+        <Loader />
       )}
       <Footer />
     </div>

@@ -10,6 +10,8 @@ export function* logIn() {
     LOG_IN,
     "login",
     REQUEST_METHOD.POST,
-    " http://45.77.24.242:8080/"
+    " http://baselive.net/app",
+    undefined,
+    true
   );
 }

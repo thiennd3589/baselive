@@ -2,9 +2,9 @@ import Axios from "axios";
 import { Global } from "global";
 import { Obj, Request } from "interfaces/common";
 import { put, takeEvery, takeLatest } from "redux-saga/effects";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
-export const BASE_URI = "http://45.77.24.242:8080/api/v1/";
+export const BASE_URI = "http://baselive.net/app/api/v1/";
 export enum REQUEST_METHOD {
   GET = "get",
   POST = "post",
@@ -20,14 +20,17 @@ export const configAxios = (
   accessToken?: boolean,
   data?: Obj
 ) => {
-  
   return accessToken
     ? {
         url,
         method,
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${Global.user.token}`,
+          Authorization: `Bearer ${
+            Global.user.token
+              ? Global.user.token
+              : localStorage.getItem("accessToken")
+          }`,
         },
         params,
         baseURL: baseURL ? baseURL : BASE_URI,
@@ -61,6 +64,7 @@ export function* doQuery(
   method: REQUEST_METHOD,
   baseURL?: string,
   accessToken?: boolean,
+  notification?: boolean,
   request?: Request<Obj>
 ) {
   let response;
@@ -84,10 +88,19 @@ export function* doQuery(
       );
     }
     if (response.status === 200) {
+      if (notification) {
+        yield notificationSuccess({ content: "Success" });
+      }
       yield put({ type: request?.response?.success, payload: response });
     } else if (response.status === 201) {
+      if (notification) {
+        yield notificationSuccess({ content: "Success" });
+      }
       yield put({ type: request?.response?.success, payload: response });
     } else {
+      if (notification) {
+        yield notificationError({ content: "Failure" });
+      }
       yield put({ type: request?.response?.failure, payload: response });
     }
   } catch (error) {
@@ -102,6 +115,7 @@ export function* watchQuery(
   method: REQUEST_METHOD,
   baseURL?: string,
   accessToken?: boolean,
+  notification?: boolean,
   mode?: "latest" | "every" | "throttle" | "debounce"
 ): Generator {
   if (mode == null) {
@@ -111,13 +125,28 @@ export function* watchQuery(
       mode = "every";
     }
   }
-
   switch (mode) {
     case "latest":
-      yield takeLatest(action, doQuery, url, method, baseURL, accessToken);
+      yield takeLatest(
+        action,
+        doQuery,
+        url,
+        method,
+        baseURL,
+        accessToken,
+        notification
+      );
       break;
     case "every":
-      yield takeEvery(action, doQuery, url, method, baseURL, accessToken);
+      yield takeEvery(
+        action,
+        doQuery,
+        url,
+        method,
+        baseURL,
+        accessToken,
+        notification
+      );
       break;
     default:
       break;
@@ -145,7 +174,7 @@ export const mapCategoryToDropdownOptions = (category: Obj[]) => {
 
 export const notificationSuccess = (params: Obj) => {
   toast.success(params.content, {
-    position: 'top-right',
+    position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -157,7 +186,7 @@ export const notificationSuccess = (params: Obj) => {
 
 export const notificationError = (params: Obj) => {
   toast.error(params.content, {
-    position: 'top-right',
+    position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,

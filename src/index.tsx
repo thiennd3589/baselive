@@ -44,10 +44,10 @@ i18n
 //animation
 AOS.init({
   duration: 700,
+  startEvent: "load",
 });
 
 window.addEventListener("load", () => {
-  window.scrollTo(0, 0);
   AOS.refresh();
 });
 

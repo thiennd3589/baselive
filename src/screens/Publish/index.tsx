@@ -88,7 +88,6 @@ const Publish = () => {
 
   useEffect(() => {
     if (updateEventResult && updateEventResult.success && redirect) {
-      notificationSuccess({ content: "Create event successfully!" });
       setTimeout(() => {
         history.push("/");
       });

@@ -102,7 +102,11 @@ const SignUp = (props: SignUpProps) => {
       return;
     }
     dispatch(
-      signUp({ email: state.email.value, password: state.password.value })
+      signUp({
+        fullname: state.fullname.value,
+        email: state.email.value,
+        password: state.password.value,
+      })
     );
     setState((prev) => ({ ...prev, enableRedirect: true }));
   };

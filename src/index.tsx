@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import ScrollToTop from "components/ScrollTop";
 import reportWebVitals from "./reportWebVitals";
 import { initReactI18next } from "react-i18next";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import AOS from "aos";
 import translateEN from "./i18n/en.json";
 import translateVI from "./i18n/vi.json";

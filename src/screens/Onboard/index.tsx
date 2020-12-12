@@ -143,7 +143,7 @@ const Onboard = () => {
             responsive={{
               extraLarge: {
                 breakpoint: { max: 3000, min: 1500 },
-                items: 5,
+                items: 4,
                 paritialVisibilityGutter: 60,
               },
               desktop: {

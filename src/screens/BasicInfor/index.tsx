@@ -20,7 +20,6 @@ import { DropdownProps } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import { mapCategoryToDropdownOptions } from "utils";
 import { handleEventInfoForRequest } from "utils/event";
-import { Global } from "global";
 
 export const selectionButton = [
   { text: "Single event", value: "SINGLE_EVENT" },

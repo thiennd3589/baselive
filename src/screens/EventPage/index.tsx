@@ -155,7 +155,14 @@ const EventPage = () => {
                 <Icon name="heart outline" />
               </div>
               {enableWatch ? (
-                <div className="TicketButton">Watch</div>
+                <div
+                  className="TicketButton"
+                  onClick={() => {
+                    history.push("/watch");
+                  }}
+                >
+                  Watch
+                </div>
               ) : (
                 <Modal
                   onClose={() => {

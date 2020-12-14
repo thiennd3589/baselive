@@ -1,0 +1,25 @@
+.Resources {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding-left: 20px;
+  height: 100%;
+  .ResourceItem {
+    display: flex;
+    font-size: 1.2rem;
+    color: black;
+    margin: 5px 0;
+    width: 100%;
+    cursor: pointer;
+    i {
+      color: #3b5998;
+      margin-right: 10px;
+    }
+    span {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

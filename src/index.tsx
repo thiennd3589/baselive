@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import i18n from "i18next";
+import AOS from "aos";
 import { toast } from "react-toastify";
 import { Provider } from "react-redux";
 import ScrollToTop from "components/ScrollTop";
-import reportWebVitals from "./reportWebVitals";
 import { initReactI18next } from "react-i18next";
 import { HashRouter as Router } from "react-router-dom";
-import AOS from "aos";
 import translateEN from "./i18n/en.json";
 import translateVI from "./i18n/vi.json";
 import App from "./App";
@@ -65,4 +64,3 @@ ReactDOM.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

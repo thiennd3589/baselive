@@ -12,10 +12,9 @@ import SignUp from "screens/SignUp";
 import { useDispatch } from "react-redux";
 import { queryCategory } from "redux-saga/global-actions";
 import Loader from "components/Loader";
+import Watch from "screens/Watch";
+import Login from "screens/Login";
 
-const Login = React.lazy(
-  () => import(/* webpackChunkName: "Login" */ "screens/Login")
-);
 const LandingPage = React.lazy(
   () => import(/* webpackChunkName: "Login" */ "screens/LandingPage")
 );
@@ -41,9 +40,7 @@ const Router = () => {
       </Route>
       <Route path="/onboard" component={Onboard} />
       <Route path="/login">
-        <Suspense fallback={<Loader />}>
           <Login />
-        </Suspense>
       </Route>
       <Route path="/signup" component={SignUp} />
       <Route
@@ -102,6 +99,7 @@ const Router = () => {
         }}
       />
       <Route path="/event/:id" component={EventPage} />
+      <Route path="/watch" component={Watch} />
     </Switch>
   );
 };

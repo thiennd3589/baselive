@@ -1,0 +1,17 @@
+@import "../../../variables.scss";
+.DropZone {
+  margin: 10px;
+  border: 1px solid $border-color;
+
+  .DragZone {
+    .Move {
+      display: flex;
+      justify-content: space-between;
+      background-color: #a52a2a;
+      color: white;
+      padding: 5px 10px;
+      padding-left: 20px;
+      cursor: move;
+    }
+  }
+}

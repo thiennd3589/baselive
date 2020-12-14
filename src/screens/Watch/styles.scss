@@ -1,0 +1,62 @@
+.Watch {
+  height: 100vh;
+  background: url("../../assets/watch/bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  .Header .Container .Menu .ui.menu .item {
+    color: white;
+  }
+  .View {
+    display: flex;
+    height: calc(100% - 70px);
+    .LeftSection {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      .DropZone {
+        &:last-child {
+          flex-grow: 1;
+          .DragZone {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+          }
+        }
+      }
+    }
+    .CenterSection {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      > div {
+        flex: 1;
+      }
+      .TopCenter {
+        flex: 2;
+        margin-bottom: 10px;
+        .DropZone {
+          height: 100%;
+          .DragZone {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+          }
+        }
+      }
+
+      .BottomCenter {
+        display: flex;
+
+        .DropZone {
+          flex: 1;
+        }
+      }
+    }
+    .RightSection {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

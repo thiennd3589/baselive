@@ -40,7 +40,7 @@ const Router = () => {
       </Route>
       <Route path="/onboard" component={Onboard} />
       <Route path="/login">
-          <Login />
+        <Login />
       </Route>
       <Route path="/signup" component={SignUp} />
       <Route
@@ -99,7 +99,7 @@ const Router = () => {
         }}
       />
       <Route path="/event/:id" component={EventPage} />
-      <Route path="/watch" component={Watch} />
+      <Route path="/watch/:id" component={Watch} />
     </Switch>
   );
 };

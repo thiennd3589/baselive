@@ -1,3 +1,4 @@
+import Loader from "components/Loader";
 import { Obj } from "interfaces/common";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -40,7 +41,7 @@ const EventCategory = () => {
     );
   };
 
-  return (
+  return category && category.success ? (
     <div className="EventCategory">
       <div className="Title">
         <span>Explore Online event</span>
@@ -59,6 +60,8 @@ const EventCategory = () => {
             ))}
       </div>
     </div>
+  ) : (
+    <Loader />
   );
 };
 

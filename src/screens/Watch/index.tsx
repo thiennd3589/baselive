@@ -12,37 +12,8 @@ import Header from "components/Header";
 import { SemanticICONS } from "semantic-ui-react/dist/commonjs/generic";
 import { Icon, Sidebar } from "semantic-ui-react";
 import ControlBar from "./ControlBar";
-
-// enum COMPONENT {
-//   ADS_BANNER = "ADS_BANNER",
-//   QA = "QA",
-//   RESOURCES = "RESOURCES",
-//   SLIDE = "SLIDE",
-//   SPEAKER_BIO = "SPEAKER_BIO",
-//   SURVEY = "SURVEY",
-//   VIDEO = "VIDEO",
-// }
-
-// const mapStateToComponent = (comp: string) => {
-//   switch (comp) {
-//     case COMPONENT.ADS_BANNER:
-//       return <AdsBanner />;
-//     case COMPONENT.QA:
-//       return <QaA />;
-//     case COMPONENT.RESOURCES:
-//       return <Resources />;
-//     case COMPONENT.SLIDE:
-//       return <Slide />;
-//     case COMPONENT.SPEAKER_BIO:
-//       return <SpeakerBio />;
-//     case COMPONENT.SURVEY:
-//       return <Survey />;
-//     case COMPONENT.VIDEO:
-//       return <Video />;
-//     default:
-//       return <Video />;
-//   }
-// };
+import { useParams } from "react-router-dom";
+import { Obj } from "interfaces/common";
 
 const resourceList = [
   { url: "Branding strategy.docx", icon: "file word" as SemanticICONS },
@@ -52,6 +23,7 @@ const resourceList = [
 ];
 
 const Watch = () => {
+  const param = useParams();
   const [controlVisible, setControlVisible] = useState(true);
   const onDrag = (event: React.DragEvent<HTMLDivElement>, sourceId: string) => {
     event.dataTransfer.setData("id", sourceId);
@@ -62,7 +34,6 @@ const Watch = () => {
     let source = document.getElementById(sourceId);
     let target = document.getElementById(targetId);
     let temp = target!.innerHTML;
-    console.log(typeof temp);
     target!.innerHTML = source!.innerHTML;
     source!.innerHTML = temp;
   };
@@ -103,7 +74,7 @@ const Watch = () => {
               onItemDrop={onDrop}
               title="Livestream media"
             >
-              <Video />
+              <Video videoId={(param as Obj).id as string} />
             </DropZone>
             <DropZone
               id={"bottom-left"}

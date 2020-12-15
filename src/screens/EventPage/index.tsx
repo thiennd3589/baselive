@@ -158,7 +158,7 @@ const EventPage = () => {
                 <div
                   className="TicketButton"
                   onClick={() => {
-                    history.push("/watch");
+                    history.push("/watch/null");
                   }}
                 >
                   Watch

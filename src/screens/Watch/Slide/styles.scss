@@ -1,4 +1,7 @@
+@import "../../../variables.scss";
 .Slide {
+  border: 1px solid $border-color;
+  border-top: unset;
   .Content {
     width: 100%;
     position: relative; /* If you want text inside of it */

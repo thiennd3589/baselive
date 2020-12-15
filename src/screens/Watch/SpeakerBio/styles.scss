@@ -1,6 +1,10 @@
+@import "../../../variables.scss";
+
 .SpeakerBio {
   width: 100%;
   img {
+    border: 1px solid $border-color;
+    border-top: unset;
     width: 100%;
   }
 }

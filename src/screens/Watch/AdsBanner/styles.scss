@@ -1,6 +1,10 @@
-.AdsBanner{
+@import "../../../variables.scss";
+
+.AdsBanner {
+  width: 100%;
+  img {
     width: 100%;
-    img{
-        width: 100%;
-    }
+    border: 1px solid $border-color;
+    border-top: unset;
+  }
 }

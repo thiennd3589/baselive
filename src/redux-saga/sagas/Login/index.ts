@@ -10,7 +10,7 @@ export function* logIn() {
     LOG_IN,
     "login",
     REQUEST_METHOD.POST,
-    " http://baselive.net/app",
+    " https://baselive.net/app",
     undefined,
     true
   );

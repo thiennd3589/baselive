@@ -1,8 +1,12 @@
+@import "../../../variables.scss";
+
 .Video {
   .Content {
     width: 100%;
     position: relative; /* If you want text inside of it */
     padding-top: 56.25%;
+    border: 1px solid $border-color;
+    border-top: unset;
     iframe {
       position: absolute;
       top: 0;

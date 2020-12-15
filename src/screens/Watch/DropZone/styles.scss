@@ -1,10 +1,15 @@
 @import "../../../variables.scss";
 .DropZone {
   margin: 10px;
-  border: 1px solid $border-color;
 
   .DragZone {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
     .Move {
+      border: 1px solid $border-color;
+      border-bottom: unset;
       display: flex;
       justify-content: space-between;
       background-color: #a52a2a;

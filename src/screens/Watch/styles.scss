@@ -1,9 +1,41 @@
 .Watch {
-  height: 100vh;
   background: url("../../assets/watch/bg.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  min-height: 100vh;
+  .ShowControl {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    background-color: rgba(75, 75, 75, 0.9);
+    padding: 0 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+
+    i {
+      font-size: 1.5rem !important;
+      color: white;
+      position: relative;
+      top: 3px;
+    }
+  }
+  .ui {
+    &.sidebar {
+      overflow-y: unset !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
   .Header .Container .Menu .ui.menu .item {
     color: white;
   }

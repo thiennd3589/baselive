@@ -4,7 +4,7 @@ import { Obj, Request } from "interfaces/common";
 import { put, takeEvery, takeLatest } from "redux-saga/effects";
 import { toast } from "react-toastify";
 
-export const BASE_URI = "http://baselive.net/app/api/v1/";
+export const BASE_URI = "https://baselive.net/app/api/v1/";
 export enum REQUEST_METHOD {
   GET = "get",
   POST = "post",

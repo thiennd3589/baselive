@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AdsBanner from "./AdsBanner";
 import QaA from "./QaA";
 import Resources from "./Resource";
@@ -14,6 +14,9 @@ import { Icon, Sidebar } from "semantic-ui-react";
 import ControlBar from "./ControlBar";
 import { useParams } from "react-router-dom";
 import { Obj } from "interfaces/common";
+import { shallowEqual, useSelector } from "react-redux";
+import { State } from "redux-saga/reducers";
+import { getIdFromYoutube } from "utils";
 
 const resourceList = [
   { url: "Branding strategy.docx", icon: "file word" as SemanticICONS },
@@ -24,10 +27,20 @@ const resourceList = [
 
 const Watch = () => {
   const param = useParams();
+  const { event } = useSelector(
+    (state: State) => ({
+      event: state.event,
+    }),
+    shallowEqual
+  );
   const [controlVisible, setControlVisible] = useState(true);
   const onDrag = (event: React.DragEvent<HTMLDivElement>, sourceId: string) => {
     event.dataTransfer.setData("id", sourceId);
   };
+
+  useEffect(() => {
+    console.log(((event!.response as Obj).data as Obj).livestreamUrl);
+  }, []);
 
   const onDrop = (event: React.DragEvent<HTMLDivElement>, targetId: string) => {
     const sourceId = event.dataTransfer.getData("id");
@@ -74,7 +87,16 @@ const Watch = () => {
               onItemDrop={onDrop}
               title="Livestream media"
             >
-              <Video videoId={(param as Obj).id as string} />
+              <Video
+                videoId={
+                  ((event!.response as Obj).data as Obj).livestreamUrl
+                    ? getIdFromYoutube(
+                        ((event!.response as Obj).data as Obj)
+                          .livestreamUrl as string
+                      )
+                    : "Ge7c7otG2mk"
+                }
+              />
             </DropZone>
             <DropZone
               id={"bottom-left"}

@@ -103,11 +103,13 @@ const EventPage = () => {
     if (Global.isAuthenticated) {
       const params = {
         eventId: parseInt((param as Obj).id as string),
-        cartDetailList: ticketRef.current.map((ticket) => ({
-          ticketId: ticket.id,
-          amount: ticket.buyQuantity,
-          price: parseInt(ticket.price as string),
-        })),
+        cartDetailList: ticketRef.current
+          .filter((ticket) => (ticket.buyQuantity as number) > 0)
+          .map((ticket) => ({
+            ticketId: ticket.id,
+            amount: ticket.buyQuantity,
+            price: parseInt(ticket.price as string),
+          })),
       };
       dispatch(createBill(params));
       total.current = 0;
@@ -158,7 +160,7 @@ const EventPage = () => {
                 <div
                   className="TicketButton"
                   onClick={() => {
-                    history.push("/watch/null");
+                    history.push(`/watch/${ref.current?.id}`);
                   }}
                 >
                   Watch

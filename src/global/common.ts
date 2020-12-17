@@ -27,8 +27,8 @@ export let Global: GlobalInterface = {
       icon: "keyboard",
     },
     {
-      title: "Online event page",
-      route: "/onlineEvent",
+      title: "Stage",
+      route: "/stage",
       icon: "edge",
     },
     {

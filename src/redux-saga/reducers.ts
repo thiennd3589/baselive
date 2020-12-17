@@ -16,6 +16,7 @@ import {
   Ticket,
   TrendingEvent,
   UpdateEventResult,
+  UserEvent,
 } from "./global-reducers";
 import { LogIn } from "screens/Login/reducers";
 import { SignUp } from "screens/SignUp/reducers";
@@ -32,6 +33,7 @@ export const state = combineReducers({
   experieneEvent: ExperienceEvent,
   eventInHanoi: EventInHanoi,
   event: Event,
+  userEvent: UserEvent,
 
   //ticket
   createBillResult: CreateBillResult,

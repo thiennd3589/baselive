@@ -1,12 +1,20 @@
 import React from "react";
 import "./styles.scss";
 
-const Slide = () => {
+interface SlideProps {
+  slideUrl?: string;
+}
+
+const Slide = (props: SlideProps) => {
   return (
     <div className="Slide">
       <div className="Content">
         <iframe
-          src="https://docs.google.com/presentation/d/e/2PACX-1vSC7s7s5JdlV4mxZSJoZ60smIVcGTZ86u5AlKt_nI7t3CIS0MXuVn9BW3-6s5ctFSaTTihsAhSmGsgN/embed?start=true&loop=true&delayms=10000"
+          src={
+            props.slideUrl
+              ? props.slideUrl
+              : "https://docs.google.com/presentation/d/e/2PACX-1vQVBICFYFy2AEOAc1uBH2hcgAPHc5vFBnahyUR0p2NtrWZ7h8Izf9kVKD3AUVUlvXArRX9V9Y6WpEvW/embed?start=true&loop=true&delayms=10000"
+          }
           frameBorder="0"
           allowFullScreen
         ></iframe>

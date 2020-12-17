@@ -14,6 +14,8 @@ import { queryCategory } from "redux-saga/global-actions";
 import Loader from "components/Loader";
 import Watch from "screens/Watch";
 import Login from "screens/Login";
+import EventManage from "screens/EventManage";
+import StageSetting from "screens/StageSetting";
 
 const LandingPage = React.lazy(
   () => import(/* webpackChunkName: "Login" */ "screens/LandingPage")
@@ -100,6 +102,17 @@ const Router = () => {
       />
       <Route path="/event/:id" component={EventPage} />
       <Route path="/watch/:id" component={Watch} />
+      <Route
+        path="/eventManage"
+        render={() => {
+          if (Global.isAuthenticated) {
+            return <EventManage />;
+          } else {
+            return <Login redirect="/eventManage" />;
+          }
+        }}
+      />
+      <Route path="/stage" component={StageSetting} />
     </Switch>
   );
 };

@@ -1,0 +1,116 @@
+@import "../../variables.scss";
+.EventManage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  .Header {
+    width: 100%;
+  }
+  .Content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    .AllEvent {
+      padding: 20px;
+      margin: 20px;
+      border: 1px solid #dfe0eb;
+      border-radius: 8px;
+
+      .EventItem {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1.5px solid #dfe0eb;
+        padding: 20px 5px;
+
+        &.TableHeader {
+          color: #9fa2b4 !important;
+          span {
+            color: #9fa2b4 !important;
+            font-size: 1rem;
+          }
+
+          &:hover {
+            background-color: unset !important;
+          }
+        }
+        > .Detail {
+          display: flex;
+          flex-direction: column;
+          flex: 2;
+          h3 {
+            margin: 0;
+          }
+          span {
+            color: #c5c7cd;
+            font-size: 0.9rem;
+          }
+        }
+        > .Info {
+          display: flex;
+          flex: 1;
+          justify-content: flex-end;
+          > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 50px;
+            margin: 0 20px;
+
+            &.More {
+              cursor: pointer;
+            }
+          }
+        }
+
+        &:hover {
+          background-color: #dfe0eb;
+        }
+      }
+
+      .Title {
+        h3 {
+          font-weight: 500;
+          font-size: 1.35rem;
+          line-height: 1.7rem;
+          letter-spacing: 0.4px;
+          color: #252733;
+        }
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .Empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+      text-align: center;
+
+      i {
+        font-size: 4rem;
+        color: rgba(0, 0, 0, 0.12);
+        margin: 0;
+        padding: 0;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 1.7rem;
+      }
+    }
+    .ToggleCreateTicket {
+      background: #ffffff;
+      border: 1px solid #464646;
+      box-shadow: 0px 2px 16px #ececec;
+      border-radius: 5px;
+      height: 3rem;
+      width: 14rem;
+    }
+  }
+}

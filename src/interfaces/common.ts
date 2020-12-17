@@ -30,13 +30,13 @@ export interface Request<T> extends AnyAction {
 }
 
 export interface TicketInfo {
-  ticketName: string;
-  ticketPrice: number;
-  ticketQuantity: number;
+  name: string;
+  price: number;
+  quantity: number;
   startDate: string;
   endDate: string;
   endTime: string;
-  endSale: string;
+  startTime: string;
 }
 
 export interface EventInfo {

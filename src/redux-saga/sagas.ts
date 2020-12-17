@@ -11,6 +11,7 @@ import {
   queryExperienceEvent,
   queryEventInHanoi,
   querySingleEvent,
+  queryUserEvent,
 } from "./sagas/Events";
 import { logIn, signUp } from "./sagas/Login";
 import { createBill, queryBill, queryTicket } from "./sagas/Ticket";
@@ -30,6 +31,7 @@ function* sagas() {
     queryTicket(),
     createBill(),
     queryBill(),
+    queryUserEvent(),
     //
     uploadImage(),
     //

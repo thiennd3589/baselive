@@ -1,4 +1,4 @@
-import { EventInfo, Obj } from "interfaces/common";
+import { Obj } from "interfaces/common";
 import {
   CREATE_BILL,
   CREATE_EVENT,
@@ -11,6 +11,7 @@ import {
   QUERY_SINGLE_EVENT,
   QUERY_TICKET,
   QUERY_TRENDING_EVENT,
+  QUERY_USER_EVENT,
   SAVE_EVENT_BASIC_INFO,
   UPDATE_EVENT,
   UPLOAD_IMAGE,
@@ -42,6 +43,8 @@ import {
   CREATE_BILL_FAILURE,
   QUERY_BILL_SUCCESS,
   QUERY_BILL_FAILURE,
+  QUERY_USER_EVENT_SUCCESS,
+  QUERY_USER_EVENT_FAILURE,
 } from "./global-reducers";
 
 //Local
@@ -135,6 +138,14 @@ export const querySingleEvent = (payload: Obj) => ({
   response: {
     success: QUERY_SINGLE_EVENT_SUCCESS,
     failure: QUERY_SINGLE_EVENT_FAILURE,
+  },
+});
+
+export const queryUserEvent = () => ({
+  type: QUERY_USER_EVENT,
+  response: {
+    success: QUERY_USER_EVENT_SUCCESS,
+    response: QUERY_USER_EVENT_FAILURE,
   },
 });
 

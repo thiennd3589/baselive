@@ -1,6 +1,6 @@
 @import "../../variables.scss";
 
-.Publish {
+.StageSetting {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -22,7 +22,6 @@
     }
 
     .Content {
-      width: 70%;
       h1 {
         border-bottom: 1px solid $border-color;
         padding-bottom: 10px;
@@ -120,9 +119,8 @@
         width: 100%;
         display: flex;
         justify-content: flex-end;
-        margin: 30px 0;
-        border-top: 1px solid $border-color;
-        padding: 20px;
+        margin: 10px 0;
+        padding: 10px;
 
         .Button {
           font-weight: normal;

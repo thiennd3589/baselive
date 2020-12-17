@@ -69,12 +69,14 @@ const Detail = () => {
 
   useEffect(() => {
     ref.current = (basicInfo as unknown) as EventInfo;
+    ref.current.summary &&
+      setState((prev) => ({ ...prev, summary: ref.current.summary! }));
     redraw({});
   }, [basicInfo]);
 
   useEffect(() => {
     if (updateEventResult && updateEventResult.success && redirect) {
-      history.push("/ticket");
+      history.push("/stage");
     }
   });
 
@@ -91,6 +93,7 @@ const Detail = () => {
 
   const onDiscriptionChange = (data: any) => {
     ref.current.description = JSON.stringify(data);
+    redraw({});
   };
 
   const onSubmit = () => {

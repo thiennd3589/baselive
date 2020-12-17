@@ -8,6 +8,7 @@ import {
   QUERY_EXPERIENCE_EVENT,
   QUERY_SINGLE_EVENT,
   QUERY_TRENDING_EVENT,
+  QUERY_USER_EVENT,
   UPDATE_EVENT,
 } from "redux-saga/actions";
 import { REQUEST_METHOD, watchQuery } from "utils/common";
@@ -56,4 +57,14 @@ export function* queryEventInHanoi() {
 
 export function* querySingleEvent() {
   return yield watchQuery(QUERY_SINGLE_EVENT, "e/detail", REQUEST_METHOD.GET);
+}
+
+export function* queryUserEvent() {
+  return yield watchQuery(
+    QUERY_USER_EVENT,
+    "e/mine",
+    REQUEST_METHOD.GET,
+    undefined,
+    true
+  );
 }

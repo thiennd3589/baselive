@@ -195,3 +195,12 @@ export const notificationError = (params: Obj) => {
     progress: undefined,
   });
 };
+
+export const getIdFromYoutube = (link: string) => {
+  let id = link.split("v=")[1];
+  let ampersandPosition = id.indexOf("&");
+  if (ampersandPosition != -1) {
+    id = id.substring(0, ampersandPosition);
+  }
+  return id;
+};

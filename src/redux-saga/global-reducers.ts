@@ -94,6 +94,14 @@ export const Event = createReducer(
   QUERY_SINGLE_EVENT_FAILURE
 );
 
+export const QUERY_USER_EVENT_SUCCESS = "QUERY_USER_EVENT_SUCCESS";
+export const QUERY_USER_EVENT_FAILURE = "QUERY_USER_EVENT_FAILURE";
+
+export const UserEvent = createReducer(
+  QUERY_USER_EVENT_SUCCESS,
+  QUERY_USER_EVENT_FAILURE
+);
+
 //Ticket
 
 export const QUERY_TICKET_SUCCESS = "QUERY_TICKET_SUCCESS";

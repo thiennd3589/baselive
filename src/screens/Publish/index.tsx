@@ -33,7 +33,7 @@ const PreviewItem = (props: PreviewItemInterface) => {
           <div className="MainInfo">
             <h2>{props.title}</h2>
             <p>{props.startDate}</p>
-            {props.ticket && <p>${props.ticket?.ticketPrice}</p>}
+            {props.ticket && <p>${props.ticket?.price}</p>}
           </div>
           <div className="Preview">Preview</div>
         </div>

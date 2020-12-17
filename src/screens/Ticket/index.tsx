@@ -14,17 +14,17 @@ import { EventInfo, Obj, TicketInfo } from "interfaces/common";
 import { useHistory } from "react-router-dom";
 
 interface InforState {
-  ticketQuantity: {
+  quantity: {
     value: number;
     errorMessage: string;
     showError: boolean;
   };
-  ticketName: {
+  name: {
     value: string;
     errorMessage: string;
     showError: boolean;
   };
-  ticketPrice: {
+  price: {
     value: number;
     errorMessage: string;
     showError: boolean;
@@ -35,12 +35,12 @@ const TicketItem = (props: TicketInfo) => {
   return (
     <div className="TicketItem">
       <div className="Detail">
-        <h3>{props.ticketName}</h3>
-        <span>{`${props.endSale} in ${props.startDate} ~ ${props.endTime} in ${props.endDate}`}</span>
+        <h3>{props.name}</h3>
+        <span>{`${props.startTime} in ${props.startDate} ~ ${props.endTime} in ${props.endDate}`}</span>
       </div>
       <div className="Info">
-        <div className="Quantity">{props.ticketQuantity}</div>
-        <div className="Price">{props.ticketPrice}</div>
+        <div className="Quantity">{props.quantity}</div>
+        <div className="Price">{props.price}</div>
         <div className="More">
           <Icon name="ellipsis vertical" />
         </div>
@@ -54,9 +54,9 @@ const Ticket = () => {
   const dispatch = useDispatch();
   ///State
   const [state, setState] = useState<InforState>({
-    ticketQuantity: { value: 0, errorMessage: "", showError: false },
-    ticketName: { value: "", errorMessage: "", showError: false },
-    ticketPrice: { value: 0, errorMessage: "", showError: false },
+    quantity: { value: 0, errorMessage: "", showError: false },
+    name: { value: "", errorMessage: "", showError: false },
+    price: { value: 0, errorMessage: "", showError: false },
   });
   const [, redraw] = useState({});
   const [createTicketVisible, setcreateTicketVisible] = useState(true);
@@ -71,13 +71,13 @@ const Ticket = () => {
   ///Ref
   const listTicket = useRef<TicketInfo[]>([]);
   const ref = useRef<TicketInfo>({
-    ticketName: "",
-    ticketPrice: 0,
-    ticketQuantity: 0,
+    name: "",
+    price: 0,
+    quantity: 0,
     startDate: "",
     endDate: "",
     endTime: "",
-    endSale: "",
+    startTime: "",
   });
 
   const eventInfoRef = useRef<EventInfo>({
@@ -97,11 +97,16 @@ const Ticket = () => {
   useEffect(() => {
     if (eventInfo) {
       eventInfoRef.current = (eventInfo as unknown) as EventInfo;
+      if (eventInfoRef.current.ticketList) {
+        listTicket.current = eventInfoRef.current.ticketList as TicketInfo[];
+      }
+      redraw({});
     }
   }, [eventInfo]);
 
   useEffect(() => {
     if (createTicketResult && createTicketResult.success) {
+      console.log(ref.current);
       listTicket.current.push(ref.current);
       redraw({});
     }
@@ -113,16 +118,11 @@ const Ticket = () => {
 
   const onSubmit = () => {
     const params = {
-      eventId: (createEventResult?.response as Obj).data,
-      name: ref.current.ticketName,
-      quantity: ref.current.ticketQuantity,
-      price: ref.current.ticketPrice,
-      startDate: ref.current.startDate,
-      endDate: ref.current.endDate,
-      startTime: ref.current.endSale,
-      endTime: ref.current.endTime,
+      eventId: eventInfoRef.current.id
+        ? eventInfoRef.current.id
+        : (createEventResult?.response as Obj).data,
+      ...ref.current,
     };
-    console.log(params);
     dispatch(createTicket(params));
     setcreateTicketVisible(false);
   };
@@ -160,6 +160,7 @@ const Ticket = () => {
   const saveTicket = () => {
     eventInfoRef.current.ticketList = listTicket.current;
     dispatch(saveEventBasicInfo((eventInfoRef.current as unknown) as Obj));
+    listTicket.current = [];
     history.push("/publish");
   };
 
@@ -186,38 +187,32 @@ const Ticket = () => {
             <div className="Form">
               <TextBox
                 label="Name"
-                name="ticketName"
-                value={
-                  state.ticketName.value
-                    ? state.ticketName.value
-                    : ref.current.ticketName
-                }
-                errorMessage={state.ticketName.errorMessage}
-                showError={state.ticketName.showError}
+                name="name"
+                value={state.name.value ? state.name.value : ref.current.name}
+                errorMessage={state.name.errorMessage}
+                showError={state.name.showError}
                 onChange={onChange}
               />
               <TextBox
                 label="Quantity"
-                name="ticketQuantity"
+                name="quantity"
                 value={
-                  state.ticketQuantity.value
-                    ? state.ticketQuantity.value
-                    : ref.current.ticketQuantity
+                  state.quantity.value
+                    ? state.quantity.value
+                    : ref.current.quantity
                 }
-                errorMessage={state.ticketQuantity.errorMessage}
-                showError={state.ticketQuantity.showError}
+                errorMessage={state.quantity.errorMessage}
+                showError={state.quantity.showError}
                 onChange={onChange}
               />
               <TextBox
                 label="Price"
-                name="ticketPrice"
+                name="price"
                 value={
-                  state.ticketPrice.value
-                    ? state.ticketPrice.value
-                    : ref.current.ticketPrice
+                  state.price.value ? state.price.value : ref.current.price
                 }
-                errorMessage={state.ticketPrice.errorMessage}
-                showError={state.ticketPrice.showError}
+                errorMessage={state.price.errorMessage}
+                showError={state.price.showError}
                 onChange={onChange}
               />
               <div className="DateTime">
@@ -233,7 +228,7 @@ const Ticket = () => {
                     type="time"
                     label="End sale"
                     onChange={(e, data) => {
-                      onDateTimeChange(e, data, "endSale");
+                      onDateTimeChange(e, data, "startTime");
                     }}
                   />
                 </div>

@@ -22,12 +22,6 @@ const SurveyForm = (props: SurveyFormProps) => {
   });
   const [, redraw] = useState({});
 
-  const ref = useRef<SurveyQuestion[]>([]);
-
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
-
   const changeType = (type: number) => {
     setState((prev) => ({
       ...prev,

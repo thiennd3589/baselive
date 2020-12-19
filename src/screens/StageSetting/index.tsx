@@ -62,7 +62,6 @@ const StageSetting = () => {
   useEffect(() => {
     if (eventInfo) {
       ref.current = eventInfo;
-      console.log(eventInfo);
       setState((prev) => ({
         ...prev,
         livestreamUrl: eventInfo.livestreamUrl as string,
@@ -80,20 +79,18 @@ const StageSetting = () => {
     if (imageUploaded && imageUploaded.success) {
       ref.current.adsImage = ((imageUploaded.response as Obj).data as Obj)
         .url as string;
-      console.log("hey");
       redraw({});
     }
   }, [imageUploaded]);
 
   useEffect(() => {
     if (updateEventResult && updateEventResult.success && redirect) {
-      console.log(updateEventResult);
+      (updateEventResult);
       history.push("/ticket");
     }
   });
 
   useEffect(() => {
-    console.log(state.questionList);
     redraw({});
   }, [state.questionList]);
 
@@ -104,7 +101,6 @@ const StageSetting = () => {
 
   const onSubmit = () => {
     if (state.questionList) {
-      console.log(state.questionList);
       const questionSendList: SurveyQuestion[] = state.questionList.map(
         (item) =>
           ({
@@ -116,13 +112,10 @@ const StageSetting = () => {
             })),
           } as SurveyQuestion)
       );
-      console.log(questionSendList);
       ref.current.questionList = questionSendList;
     }
     dispatch(saveEventBasicInfo((ref.current as unknown) as Obj));
-    console.log(
-      handleEventInfoForRequest((ref.current as unknown) as EventInfo) as Obj
-    );
+
     dispatch(
       updateEvent(
         handleEventInfoForRequest((ref.current as unknown) as EventInfo) as Obj

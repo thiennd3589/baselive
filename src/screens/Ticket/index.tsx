@@ -106,7 +106,6 @@ const Ticket = () => {
 
   useEffect(() => {
     if (createTicketResult && createTicketResult.success) {
-      console.log(ref.current);
       listTicket.current.push(ref.current);
       redraw({});
     }

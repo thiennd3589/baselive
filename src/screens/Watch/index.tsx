@@ -39,9 +39,6 @@ const Watch = () => {
     event.dataTransfer.setData("id", sourceId);
   };
 
-  useEffect(() => {
-    console.log(controlVisible);
-  });
 
   const onDrop = (event: React.DragEvent<HTMLDivElement>, targetId: string) => {
     const sourceId = event.dataTransfer.getData("id");
@@ -63,7 +60,6 @@ const Watch = () => {
     event?: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
     event && event.stopPropagation();
-    console.log("show");
     setControlVisible(true);
   };
 

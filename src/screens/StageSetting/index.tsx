@@ -85,7 +85,6 @@ const StageSetting = () => {
 
   useEffect(() => {
     if (updateEventResult && updateEventResult.success && redirect) {
-      (updateEventResult);
       history.push("/ticket");
     }
   });

@@ -1,11 +1,22 @@
 import React from "react";
-import banner from "assets/watch/banner.jpg";
 import "./styles.scss";
+import { Icon } from "semantic-ui-react";
 
-const AdsBanner = () => {
+interface AdsBannerProps {
+  adsImage?: string;
+  adsUrl?: string;
+}
+
+const AdsBanner = (props: AdsBannerProps) => {
   return (
-    <div className="AdsBanner">
-      <img src={banner} alt="banner" />
+    <div className={`${props.adsImage ? "AdsBanner HasImage" : "AdsBanner"}`}>
+      <a href={props.adsUrl ? props.adsUrl : "#"}>
+        {props.adsImage ? (
+          <img src={props.adsImage} alt="banner" />
+        ) : (
+          <Icon name="images" />
+        )}
+      </a>
     </div>
   );
 };

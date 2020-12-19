@@ -21,10 +21,11 @@ export const handleEventInfoForRequest = (eventInfo: EventInfo) => {
     publishTime: eventInfo.publishTime,
     googleSlideUrl: eventInfo.googleSlideUrl,
     livestreamUrl: eventInfo.livestreamUrl,
-    adsImage: eventInfo.livestreamUrl,
+    adsImage: eventInfo.adsImage,
     adsTitle: eventInfo.adsUrl,
     adsUrl: eventInfo.adsUrl,
     organizerList: [],
     documentList: [],
+    questionList: eventInfo.questionList,
   };
 };

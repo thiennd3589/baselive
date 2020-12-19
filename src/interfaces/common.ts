@@ -39,6 +39,16 @@ export interface TicketInfo {
   startTime: string;
 }
 
+export interface SurveyQuestion {
+  question: string;
+  type: number;
+  answerList: SurveyAnswer[];
+}
+
+export interface SurveyAnswer {
+  answer: "string";
+}
+
 export interface EventInfo {
   id?: string | number;
   tags: string[];
@@ -63,4 +73,5 @@ export interface EventInfo {
   documentList?: Obj[];
   eventImage?: string;
   ticketList?: TicketInfo[];
+  questionList?: SurveyQuestion[];
 }

@@ -196,11 +196,20 @@ export const notificationError = (params: Obj) => {
   });
 };
 
-export const getIdFromYoutube = (link: string) => {
-  let id = link.split("v=")[1];
-  let ampersandPosition = id.indexOf("&");
-  if (ampersandPosition != -1) {
-    id = id.substring(0, ampersandPosition);
+export const getIdFromYoutube = (link?: string) => {
+  if (link) {
+    let id = link.split("v=")[1];
+    let ampersandPosition;
+    if (id) {
+      ampersandPosition = id.indexOf("&");
+      if (ampersandPosition != -1) {
+        id = id.substring(0, ampersandPosition);
+      }
+    } else {
+      return undefined;
+    }
+    return id;
+  } else {
+    return undefined;
   }
-  return id;
 };

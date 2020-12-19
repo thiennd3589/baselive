@@ -1,10 +1,11 @@
 import { EventInfo, Obj, TicketInfo } from "interfaces/common";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
   queryCategory,
   queryCategoryType,
+  querySingleEvent,
   saveEventBasicInfo,
 } from "redux-saga/global-actions";
 import { State } from "redux-saga/reducers";
@@ -19,10 +20,12 @@ const EventItem = (props: EventItemProps) => {
   const { event } = props;
   const history = useHistory();
   const dispatch = useDispatch();
-  const { category, categoryType } = useSelector(
+  const [redirect, setRedirect] = useState(false);
+  const { category, categoryType, eventInfo } = useSelector(
     (state: State) => ({
       category: state.category,
       categoryType: state.categoryType,
+      eventInfo: state.event,
     }),
     shallowEqual
   );
@@ -40,54 +43,66 @@ const EventItem = (props: EventItemProps) => {
     );
   }, []);
 
+  useEffect(() => {
+    if (eventInfo && eventInfo.success && redirect) {
+      if (
+        categoryType &&
+        categoryType.success &&
+        category &&
+        category.success
+      ) {
+        const eventData = (eventInfo.response as Obj).data as Obj;
+        const categoryParam = ((category!.response as Obj).data as Obj[]).find(
+          (item) => item.id === eventData.categoryId
+        );
+        const categoryTypeParam = ((categoryType!.response as Obj)
+          .data as Obj[]).find((item) => item.id === eventData.categoryTypeId);
+        const param: Obj = {
+          id: eventData.id as number,
+          tags: (eventData.tags as string).split(","),
+          title: eventData.title as string,
+          category: {
+            key: categoryParam!.id,
+            text: categoryParam!.name,
+            value: categoryParam!.name,
+            id: categoryParam!.id,
+          },
+          categoryType: {
+            key: categoryTypeParam!.id,
+            text: categoryTypeParam!.name,
+            value: categoryTypeParam!.name,
+            id: categoryTypeParam!.id,
+          },
+          eventImage: eventData.eventImage,
+          eventStart: eventData.startDate as string,
+          eventEnd: eventData.endDate as string,
+          endTime: eventData.endTime as string,
+          startTime: eventData.startTime as string,
+          summary: eventData.summary as string,
+          description: eventData.description,
+          publishDate: eventData.publishDate as string,
+          publishTime: eventData.publishTime as string,
+          googleSlideUrl: eventData.googleSlideUrl as string,
+          livestreamUrl: eventData.livestreamUrl as string,
+          documentList: eventData.documentList as Obj[],
+          adsImage: eventData.adsImage as string,
+          adsUrl: eventData.adsUrl as string,
+          ticketList: eventData.ticketList as TicketInfo[],
+          questionList: eventData.questionList,
+        };
+        dispatch(saveEventBasicInfo(param));
+        history.push("/basicInfo");
+      }
+    }
+  }, [eventInfo]);
+
   const view = () => {
     history.push(`/event/${props.event.id}`);
   };
 
   const edit = () => {
-    if (categoryType && categoryType.success && category && category.success) {
-      const categoryParam = ((category!.response as Obj).data as Obj[]).find(
-        (item) => item.id === event.categoryId
-      );
-      const categoryTypeParam = ((categoryType!.response as Obj)
-        .data as Obj[]).find((item) => item.id === event.categoryTypeId);
-      const param: Obj = {
-        id: event.id as number,
-        tags: (event.tags as string).split(","),
-        title: event.title as string,
-        category: {
-          key: categoryParam!.id,
-          text: categoryParam!.name,
-          value: categoryParam!.name,
-          id: categoryParam!.id,
-        },
-        categoryType: {
-          key: categoryTypeParam!.id,
-          text: categoryTypeParam!.name,
-          value: categoryTypeParam!.name,
-          id: categoryTypeParam!.id,
-        },
-        eventImage: event.eventImage,
-        eventStart: event.startDate as string,
-        eventEnd: event.endDate as string,
-        endTime: event.endTime as string,
-        startTime: event.startTime as string,
-        summary: event.summary as string,
-        description: event.description,
-        publishDate: event.publishDate as string,
-        publishTime: event.publishTime as string,
-        googleSlideUrl: event.googleSlideUrl as string,
-        livestreamUrl: event.livestreamUrl as string,
-        documentList: event.documentList as Obj[],
-        adsImage: event.adsImage as string,
-        adsUrl: event.adsUrl as string,
-        ticketList: event.ticketList as TicketInfo[],
-      };
-      console.log(event);
-      console.log(param);
-      dispatch(saveEventBasicInfo(param));
-      history.push("/basicInfo");
-    }
+    dispatch(querySingleEvent({ eventId: props.event.id }));
+    setRedirect(true);
   };
   return (
     <div className="EventItem">
@@ -99,7 +114,7 @@ const EventItem = (props: EventItemProps) => {
                 ? (event.eventImage as string)
                 : "https://picsum.photos/300/200"
             }
-            alt={event.title as string}
+            alt={event.eventId as string}
           />
         </div>
         <div className="EventDetail">

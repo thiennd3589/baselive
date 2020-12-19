@@ -13,18 +13,21 @@ const icons: SemanticICONS[] = [
 ];
 
 interface ControlBarProps {
-  onHide?: () => void;
+  show: boolean;
+  onHide?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 const ControlBar = (props: ControlBarProps) => {
-  const onHide = () => {
-    props.onHide && props.onHide();
+  const onHide = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    props.onHide && props.onHide(event);
   };
   return (
     <div className="ControlBar">
-      <div className="HideIcon" onClick={onHide}>
-        <Icon name="caret down" />
-      </div>
+      {props.show === true && (
+        <div className="HideIcon" onClick={onHide}>
+          <Icon name="caret down" />
+        </div>
+      )}
       <div className="Items">
         {icons.map((icon, index) => (
           <Icon name={icon} key={index} />

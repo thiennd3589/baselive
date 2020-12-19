@@ -102,7 +102,7 @@ export const updateEvent = (payload: Obj) => ({
 export const queryTrendingEvent = () => ({
   type: QUERY_TRENDING_EVENT,
   payload: {
-    fileterType: 0,
+    filterType: 0,
   },
   response: {
     success: QUERY_TRENDING_EVENT_SUCCESS,
@@ -113,7 +113,7 @@ export const queryTrendingEvent = () => ({
 export const queryExperienceEvent = () => ({
   type: QUERY_EXPERIENCE_EVENT,
   payload: {
-    fileterType: 1,
+    filterType: 1,
   },
   response: {
     success: QUERY_EXPERIENCE_EVENT_SUCCESS,
@@ -124,7 +124,7 @@ export const queryExperienceEvent = () => ({
 export const queryEventInHanoi = () => ({
   type: QUERY_EVENT_IN_HANOI,
   payload: {
-    fileterType: 1,
+    filterType: 1,
   },
   response: {
     success: QUERY_EVENT_IN_HANOI_SUCCESS,

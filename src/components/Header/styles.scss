@@ -40,3 +40,12 @@
     }
   }
 }
+
+.AccountManage {
+  > div {
+    cursor: pointer;
+    &:hover {
+      font-weight: 500;
+    }
+  }
+}

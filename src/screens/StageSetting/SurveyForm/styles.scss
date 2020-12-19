@@ -1,0 +1,27 @@
+@import "../../../variables.scss";
+
+.SurveyForm {
+  padding: 10px 0;
+  .segment {
+    display: flex;
+    .Labels {
+      display: flex;
+      flex-direction: column;
+      .label {
+        margin: 10px 0;
+        padding: 1em 0.833em !important;
+        &.Active {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .QuestionContent {
+      .Submit {
+        background-color: $theme-color;
+        color: #fff;
+        float: right;
+      }
+    }
+  }
+}

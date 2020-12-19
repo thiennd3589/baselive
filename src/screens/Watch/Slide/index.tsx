@@ -12,7 +12,7 @@ const Slide = (props: SlideProps) => {
         <iframe
           src={
             props.slideUrl
-              ? props.slideUrl
+              ? props.slideUrl.replace('pub','embed')
               : "https://docs.google.com/presentation/d/e/2PACX-1vQVBICFYFy2AEOAc1uBH2hcgAPHc5vFBnahyUR0p2NtrWZ7h8Izf9kVKD3AUVUlvXArRX9V9Y6WpEvW/embed?start=true&loop=true&delayms=10000"
           }
           frameBorder="0"

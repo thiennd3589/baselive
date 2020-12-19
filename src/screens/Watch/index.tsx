@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AdsBanner from "./AdsBanner";
 import QaA from "./QaA";
 import Resources from "./Resource";
@@ -17,6 +17,7 @@ import { Obj } from "interfaces/common";
 import { shallowEqual, useSelector } from "react-redux";
 import { State } from "redux-saga/reducers";
 import { getIdFromYoutube } from "utils";
+import { createEvent } from "@testing-library/react";
 
 const resourceList = [
   { url: "Branding strategy.docx", icon: "file word" as SemanticICONS },
@@ -26,21 +27,21 @@ const resourceList = [
 ];
 
 const Watch = () => {
-  const param = useParams();
   const { event } = useSelector(
     (state: State) => ({
       event: state.event,
     }),
     shallowEqual
   );
+  const ref = useRef((event!.response as Obj).data as Obj);
   const [controlVisible, setControlVisible] = useState(true);
   const onDrag = (event: React.DragEvent<HTMLDivElement>, sourceId: string) => {
     event.dataTransfer.setData("id", sourceId);
   };
 
   useEffect(() => {
-    console.log(((event!.response as Obj).data as Obj).livestreamUrl);
-  }, []);
+    console.log(controlVisible);
+  });
 
   const onDrop = (event: React.DragEvent<HTMLDivElement>, targetId: string) => {
     const sourceId = event.dataTransfer.getData("id");
@@ -51,11 +52,18 @@ const Watch = () => {
     source!.innerHTML = temp;
   };
 
-  const onHideControlBar = () => {
+  const onHideControlBar = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
     setControlVisible(false);
   };
 
-  const showControlBar = () => {
+  const showControlBar = (
+    event?: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    event && event.stopPropagation();
+    console.log("show");
     setControlVisible(true);
   };
 
@@ -69,13 +77,13 @@ const Watch = () => {
       <Sidebar
         animation="overlay"
         icon="labeled"
-        inverted
+        inverted="true"
         visible={controlVisible}
-        onHide={onHideControlBar}
+        onHide={() => setControlVisible(false)}
         width="thin"
         direction="bottom"
       >
-        <ControlBar onHide={onHideControlBar} />
+        <ControlBar onHide={onHideControlBar} show={controlVisible} />
       </Sidebar>
       <Sidebar.Pusher>
         <Header />
@@ -89,7 +97,7 @@ const Watch = () => {
             >
               <Video
                 videoId={
-                  ((event!.response as Obj).data as Obj).livestreamUrl
+                  ref.current.livestreamUrl
                     ? getIdFromYoutube(
                         ((event!.response as Obj).data as Obj)
                           .livestreamUrl as string
@@ -104,7 +112,7 @@ const Watch = () => {
               onItemDrop={onDrop}
               title="Survey"
             >
-              <Survey />
+              <Survey questionList={ref.current.questionList as Obj[]} />
             </DropZone>
           </div>
           <div className="CenterSection">
@@ -115,7 +123,7 @@ const Watch = () => {
                 onItemDrop={onDrop}
                 title="Slide"
               >
-                <Slide />
+                <Slide slideUrl={ref.current.googleSlideUrl as string} />
               </DropZone>
             </div>
             <div className="BottomCenter">
@@ -152,7 +160,10 @@ const Watch = () => {
               onItemDrop={onDrop}
               title="Action to call"
             >
-              <AdsBanner />
+              <AdsBanner
+                adsImage={ref.current.adsImage as string}
+                adsUrl={ref.current.adsUrl as string}
+              />
             </DropZone>
           </div>
         </div>

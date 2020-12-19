@@ -43,6 +43,7 @@ const EventPage = () => {
   useEffect(() => {
     if (eventInfo && eventInfo.success) {
       ref.current = (eventInfo.response as Obj).data as Obj;
+      console.log(ref.current);
       redraw({});
     }
   }, [eventInfo]);

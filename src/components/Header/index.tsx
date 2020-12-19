@@ -56,7 +56,7 @@ const Header = (props: HeaderProps) => {
               <Menu.Item>
                 <Popup trigger={<Icon name="user" />} on="click">
                   <Popup.Header>Account</Popup.Header>
-                  <Popup.Content>
+                  <Popup.Content className="AccountManage">
                     <div onClick={onLogout}>Log Out</div>
                     <div
                       onClick={() => {

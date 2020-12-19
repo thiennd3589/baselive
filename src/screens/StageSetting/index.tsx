@@ -22,7 +22,7 @@ import {
 import { useHistory } from "react-router-dom";
 import Video from "screens/Watch/Video";
 import Slide from "screens/Watch/Slide";
-import { Checkbox, Modal, Radio } from "semantic-ui-react";
+import { Checkbox, Icon, Modal, Radio } from "semantic-ui-react";
 import SurveyForm from "./SurveyForm";
 import ImageInput from "elements/ImageInput";
 
@@ -137,6 +137,54 @@ const StageSetting = () => {
     dispatch(uploadImage(formData));
   };
 
+  const deleteQuestion = (question: string) => {
+    setState((prev) => ({
+      ...prev,
+      questionList: prev.questionList.filter(
+        (item) => item.question !== question
+      ),
+    }));
+  };
+
+  const renderQuestion = (question: Obj, index: number) => {
+    return (
+      <div className="Group" key={index}>
+        <div className="Content">
+          <div className="Question">{question.question}</div>
+          {(question.answerList as Obj[]).map((item, index) => {
+            return question.type === 0 ? (
+              <Radio
+                label={item.answer}
+                name={question.question as string}
+                value={item.answer as string}
+                checked={false}
+                key={index}
+              />
+            ) : question.type === 1 ? (
+              <Checkbox
+                label={item.answer}
+                name={item.question as string}
+                value={item.answer as string}
+                checked={false}
+                key={index}
+              />
+            ) : (
+              <TextBox label="Answer" value="" />
+            );
+          })}
+        </div>
+        <div
+          className="Delete"
+          onClick={() => {
+            deleteQuestion(question.question as string);
+          }}
+        >
+          <Icon name="delete" />
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="StageSetting">
       <Sidebar menus={Global.menu} active="/stage" />
@@ -236,49 +284,7 @@ const StageSetting = () => {
           >
             <>
               {state.questionList.map((item, index) => {
-                switch (item.type) {
-                  case 0:
-                    return (
-                      <div className="RadioGroup" key={index}>
-                        <div className="Question">{item.question}</div>
-                        {(item.answerList as Obj[]).map((radio, index) => {
-                          return (
-                            <Radio
-                              label={radio.answer}
-                              name={item.question as string}
-                              value={radio.answer as string}
-                              checked={false}
-                              key={index}
-                            />
-                          );
-                        })}
-                      </div>
-                    );
-                  case 1:
-                    return (
-                      <div className="CheckboxGroup" key={index}>
-                        <div className="Question">{item.question}</div>
-                        {(item.answerList as Obj[]).map((checkbox, index) => {
-                          return (
-                            <Checkbox
-                              label={checkbox.answer}
-                              name={item.question as string}
-                              value={checkbox.answer as string}
-                              checked={false}
-                              key={index}
-                            />
-                          );
-                        })}
-                      </div>
-                    );
-                  case 2:
-                    return (
-                      <div className="InputQuestion" key={index}>
-                        <div className="Question">{item.question}</div>
-                        <TextBox label="Answer" value="" />
-                      </div>
-                    );
-                }
+                return renderQuestion(item, index);
               })}
               <Modal
                 onClose={() => {

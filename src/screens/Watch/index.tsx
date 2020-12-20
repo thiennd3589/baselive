@@ -14,10 +14,11 @@ import { Icon, Sidebar } from "semantic-ui-react";
 import ControlBar from "./ControlBar";
 import { useParams } from "react-router-dom";
 import { Obj } from "interfaces/common";
-import { shallowEqual, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { State } from "redux-saga/reducers";
 import { getIdFromYoutube } from "utils";
-import { createEvent } from "@testing-library/react";
+import { querySingleEvent } from "redux-saga/global-actions";
+import Loader from "components/Loader";
 
 const resourceList = [
   { url: "Branding strategy.docx", icon: "file word" as SemanticICONS },
@@ -27,18 +28,33 @@ const resourceList = [
 ];
 
 const Watch = () => {
+  const param = useParams();
+  const dispatch = useDispatch();
   const { event } = useSelector(
     (state: State) => ({
       event: state.event,
     }),
     shallowEqual
   );
-  const ref = useRef((event!.response as Obj).data as Obj);
+  const ref = useRef(
+    event && event.success ? ((event!.response as Obj).data as Obj) : null
+  );
   const [controlVisible, setControlVisible] = useState(true);
+  const [,redraw] = useState({})
+  useEffect(() => {
+    dispatch(querySingleEvent({ eventId: (param as Obj).id }));
+  }, []);
+
+  useEffect(() => {
+    if (event && event.success) {
+      ref.current = (event!.response as Obj).data as Obj;
+      redraw({})
+    }
+  }, [event]);
+
   const onDrag = (event: React.DragEvent<HTMLDivElement>, sourceId: string) => {
     event.dataTransfer.setData("id", sourceId);
   };
-
 
   const onDrop = (event: React.DragEvent<HTMLDivElement>, targetId: string) => {
     const sourceId = event.dataTransfer.getData("id");
@@ -63,7 +79,7 @@ const Watch = () => {
     setControlVisible(true);
   };
 
-  return (
+  return ref.current ? (
     <div className="Watch">
       {controlVisible === false && (
         <div className="ShowControl" onClick={showControlBar}>
@@ -165,6 +181,8 @@ const Watch = () => {
         </div>
       </Sidebar.Pusher>
     </div>
+  ) : (
+    <Loader />
   );
 };
 

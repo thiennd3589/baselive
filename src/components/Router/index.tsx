@@ -9,13 +9,14 @@ import Ticket from "screens/Ticket";
 import Publish from "screens/Publish";
 import EventPage from "screens/EventPage";
 import SignUp from "screens/SignUp";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { queryCategory } from "redux-saga/global-actions";
 import Loader from "components/Loader";
 import Watch from "screens/Watch";
 import Login from "screens/Login";
 import EventManage from "screens/EventManage";
 import StageSetting from "screens/StageSetting";
+import { State } from "redux-saga/reducers";
 
 const LandingPage = React.lazy(
   () => import(/* webpackChunkName: "Login" */ "screens/LandingPage")
@@ -24,6 +25,7 @@ const LandingPage = React.lazy(
 const Router = () => {
   const [, redraw] = useState({});
   const dispatch = useDispatch();
+  const localEventInfo = useSelector((state: State) => state.basicInfoLocal);
   useEffect(() => {
     dispatch(
       queryCategory({ type: "category", referTableId: "", referTableName: "" })
@@ -52,7 +54,6 @@ const Router = () => {
             return <BasicInfo />;
           } else {
             return <Login redirect={"/createEvent"} />;
-            // return <Login redirect="/createEvent" />;
           }
         }}
       />
@@ -60,9 +61,9 @@ const Router = () => {
         path="/eventDetail"
         render={() => {
           if (Global.isAuthenticated) {
-            return <Detail />;
+            return localEventInfo ? <Detail /> : <Loader />;
           } else {
-            return <Detail />;
+            return <Login redirect="/eventDetail" />;
             // return <Login redirect="/createEvent" />;
           }
         }}
@@ -71,7 +72,7 @@ const Router = () => {
         path="/basicInfo"
         render={() => {
           if (Global.isAuthenticated) {
-            return <BasicInfoMin />;
+            return localEventInfo ? <BasicInfoMin /> : <Loader />;
           } else {
             return <Login />;
             // return <Login redirect="/createEvent" />;
@@ -82,10 +83,9 @@ const Router = () => {
         path="/ticket"
         render={() => {
           if (Global.isAuthenticated) {
-            return <Ticket />;
+            return localEventInfo ? <Ticket /> : <Loader />;
           } else {
             return <Login />;
-            // return <Login redirect="/createEvent" />;
           }
         }}
       />
@@ -93,7 +93,7 @@ const Router = () => {
         path="/publish"
         render={() => {
           if (Global.isAuthenticated) {
-            return <Publish />;
+            return localEventInfo ? <Publish /> : <Loader />;
           } else {
             return <Login />;
             // return <Login redirect="/createEvent" />;

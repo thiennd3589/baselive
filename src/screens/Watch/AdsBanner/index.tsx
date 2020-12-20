@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.scss";
-import { Icon } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 
 interface AdsBannerProps {
   adsImage?: string;
@@ -10,13 +10,17 @@ interface AdsBannerProps {
 const AdsBanner = (props: AdsBannerProps) => {
   return (
     <div className={`${props.adsImage ? "AdsBanner HasImage" : "AdsBanner"}`}>
-      <a href={props.adsUrl ? props.adsUrl : "#"}>
-        {props.adsImage ? (
-          <img src={props.adsImage} alt="banner" />
-        ) : (
-          <Icon name="images" />
-        )}
-      </a>
+      <div className="CallButton">
+          <Button >
+            <a href={props.adsUrl ? props.adsUrl : "#"}>See more</a>
+          </Button>
+      </div>
+
+      {props.adsImage ? (
+        <img src={props.adsImage} alt="banner" />
+      ) : (
+        <Icon name="images" />
+      )}
     </div>
   );
 };

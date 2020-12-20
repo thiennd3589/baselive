@@ -242,7 +242,7 @@ const StageSetting = () => {
           <InforSectionContainer
             className={`Ads`}
             icon="phone"
-            title={`Call to action`}
+            title={`Action to Call`}
             subTitle={[
               "Invite audience to interact and track their buying signal with a banner that direct to",
               "your website or landing page.",

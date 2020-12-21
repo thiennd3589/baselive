@@ -10,12 +10,6 @@ interface AdsBannerProps {
 const AdsBanner = (props: AdsBannerProps) => {
   return (
     <div className={`${props.adsImage ? "AdsBanner HasImage" : "AdsBanner"}`}>
-      <div className="CallButton">
-          <Button >
-            <a href={props.adsUrl ? props.adsUrl : "#"}>See more</a>
-          </Button>
-      </div>
-
       {props.adsImage ? (
         <img src={props.adsImage} alt="banner" />
       ) : (

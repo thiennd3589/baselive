@@ -28,7 +28,6 @@ class EditorContainer extends React.Component<EditorProps, EditorCompState> {
     };
   }
   shouldComponentUpdate(nextProps: EditorProps) {
-    console.log(this.props, nextProps);
     if (this.props.value !== nextProps.value) {
       nextProps.value
         ? (this.refState = EditorState.createWithContent(

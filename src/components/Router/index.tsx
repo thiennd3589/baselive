@@ -42,7 +42,7 @@ const Router = () => {
           <LandingPage />
         </Suspense>
       </Route>
-      <Route path="/onboard" component={Onboard} />
+      <Route path="/onboard" component={LandingPage} />
       <Route path="/login">
         <Login />
       </Route>
@@ -53,7 +53,7 @@ const Router = () => {
           if (Global.isAuthenticated) {
             return <BasicInfo />;
           } else {
-            return <Login redirect={"/createEvent"} />;
+            return <Login redirect={"/LandingPage"} />;
           }
         }}
       />
@@ -63,7 +63,7 @@ const Router = () => {
           if (Global.isAuthenticated) {
             return localEventInfo ? <Detail /> : <Loader />;
           } else {
-            return <Login redirect="/eventDetail" />;
+            return <Login redirect="/LandingPage" />;
             // return <Login redirect="/createEvent" />;
           }
         }}
@@ -72,7 +72,7 @@ const Router = () => {
         path="/basicInfo"
         render={() => {
           if (Global.isAuthenticated) {
-            return localEventInfo ? <BasicInfoMin /> : <Loader />;
+            return localEventInfo ? <LandingPage /> : <Loader />;
           } else {
             return <Login />;
             // return <Login redirect="/createEvent" />;
@@ -83,7 +83,7 @@ const Router = () => {
         path="/ticket"
         render={() => {
           if (Global.isAuthenticated) {
-            return localEventInfo ? <Ticket /> : <Loader />;
+            return localEventInfo ? <LandingPage /> : <Loader />;
           } else {
             return <Login />;
           }
@@ -93,26 +93,26 @@ const Router = () => {
         path="/publish"
         render={() => {
           if (Global.isAuthenticated) {
-            return localEventInfo ? <Publish /> : <Loader />;
+            return localEventInfo ? <LandingPage /> : <Loader />;
           } else {
             return <Login />;
             // return <Login redirect="/createEvent" />;
           }
         }}
       />
-      <Route path="/event/:id" component={EventPage} />
-      <Route path="/watch/:id" component={Watch} />
+      <Route path="/event/:id" component={LandingPage} />
+      <Route path="/watch/:id" component={LandingPage} />
       <Route
         path="/eventManage"
         render={() => {
           if (Global.isAuthenticated) {
-            return <EventManage />;
+            return <LandingPage />;
           } else {
             return <Login redirect="/eventManage" />;
           }
         }}
       />
-      <Route path="/stage" component={StageSetting} />
+      <Route path="/stage" component={LandingPage} />
     </Switch>
   );
 };

@@ -5,25 +5,25 @@ import "./styles.scss";
 const feedbacks = [
   {
     content:
-      "To quickly start my startup landing page design, I was looking for a webinar. Baselive is one of the best online event platform I have come across. It’s so flexible, well organised and easily editable.",
-    name: "Floyd Miles",
-    position: "Vice President, GoPro",
+      "To quickly start my startup landing page design, I was looking for a webinar. B Live is one of the best online event platform I have come across. It’s so flexible, well organised and easily editable.",
+    name: " ",
+    position: "Spa Beauty",
   },
   {
     content:
-      "I used webinar and created a online event for my startup within a week. Baselive is simple and highly intuitive, so anyone can use it.",
+      "I used webinar and created a online event for my startup within a week. B Live is simple and highly intuitive, so anyone can use it.",
     name: "Pham Duong",
     position: "Moshub",
   },
   {
-    content: "Baselive saved our time in online teaching in my company.",
+    content: "B Live saved our time in online teaching in my company.",
     name: "Nguyen Duc Hai",
     position: "Co-Founder, XHunter",
   },
   {
     content: "Best way to hold a event. And better tool than Zoom",
-    name: "Kristin Watson",
-    position: "Co-Founder, BookMyShow",
+    name: "Nguyen Duc Thien",
+    position: "Vice President of HMC",
   },
 ];
 

@@ -6,7 +6,7 @@ import "./styles.scss";
 
 const information = [
   {
-    title: "Baselive",
+    title: "B Live",
     info: [
       { text: "About us", to: "/" },
       { text: "Careers", to: "/" },
@@ -69,7 +69,7 @@ const Footer = () => {
         <div className="Logo">
           <img src={logo} alt="logo" />
           <Icon name="copyright outline" />
-          <span>Baselive</span>
+          <span>B Live</span>
         </div>
         <div className="Contact">
           <Link to="/">Terms</Link>

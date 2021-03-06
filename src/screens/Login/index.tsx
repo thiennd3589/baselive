@@ -97,7 +97,7 @@ const Login = (props: LoginProps) => {
     <>
       <Header />
       <div className="Login">
-        <div className="Title">Baselive</div>
+        <div className="Title">B Live</div>
         <div className="LoginForm">
           <TextBox
             placeholder="Type your account here"

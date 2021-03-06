@@ -138,7 +138,7 @@ const Publish = () => {
             <div className="Privacy">
               <h3>Who can see your event</h3>
               <Radio
-                label={"Public (Share on Baselive and search engines)"}
+                label={"Public (Share on B Live and search engines)"}
                 checked
               />
             </div>

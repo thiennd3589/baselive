@@ -31,7 +31,7 @@ const EventPicker = (props: EventPickerProps) => {
       </div>
       <input
         type="text"
-        placeholder={props.placeholder ? props.placeholder : `Try "Baselive`}
+        placeholder={props.placeholder ? props.placeholder : `Try "B Live"`}
         value={state.value}
         onChange={onChange}
       />

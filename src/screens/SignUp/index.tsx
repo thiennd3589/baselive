@@ -115,7 +115,7 @@ const SignUp = (props: SignUpProps) => {
     <>
       <Header />
       <div className="SignUp">
-        <div className="Title">Baselive</div>
+        <div className="Title">B Live</div>
         <div className="LoginForm">
           <TextBox
             placeholder="Type your name here"

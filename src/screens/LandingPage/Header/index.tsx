@@ -4,7 +4,7 @@ import { Global } from "global";
 import Button from "elements/Button";
 import { Icon, Menu } from "semantic-ui-react";
 import LanguagePicker from "components/LanguagePicker";
-import logo from "assets/Logo.svg";
+import logo from "assets/Logo.png";
 import "./styles.scss";
 
 interface HeaderProps {
@@ -35,7 +35,6 @@ const LandingHeader = (props: HeaderProps) => {
             <div className="LogoSection">
               <Link to="/">
                 <img src={logo} alt="logo" />
-                <span>Baselive</span>
               </Link>
             </div>
           )}

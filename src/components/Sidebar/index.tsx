@@ -22,7 +22,7 @@ const Sidebar = (props: SidebarProps) => {
     <div className="Sidebar">
       <div className="Brand" onClick={() => history.push("/")}>
         <img src={logo} alt="logo" />
-        <span>Baselive</span>
+        <span>B Live</span>
       </div>
       <div className="Event">
         <div className="Name">{basicInfoLocal?.title}</div>

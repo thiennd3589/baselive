@@ -184,7 +184,7 @@ const Onboard = () => {
       <div className="Onboard">
         <div className="Title">
           <h1 className="Text">
-            <p>Baselive</p>
+            <p>B Live</p>
             <p>A unique virual online video streaming platform </p>
           </h1>
           <EventPicker />

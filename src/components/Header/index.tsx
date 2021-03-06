@@ -29,7 +29,7 @@ const Header = (props: HeaderProps) => {
           <div className="LogoSection">
             <Link to="/">
               <img src={logo} alt="logo" />
-              <span>Baselive</span>
+              <span>B Live</span>
             </Link>
           </div>
         )}
